@@ -16,6 +16,7 @@ using System.Threading;
 using System.Windows.Input;
 using ManagedCommon;
 using Microsoft.PowerToys.Settings.UI.Library.Utilities;
+using Microsoft.PowerToys.Settings.UI.Library.ViewModels;
 using Microsoft.PowerToys.Settings.UI.Library.ViewModels.Commands;
 
 namespace Microsoft.PowerToys.Settings.UI.Library
@@ -178,6 +179,9 @@ namespace Microsoft.PowerToys.Settings.UI.Library
                 }
             }
         }
+
+        [JsonPropertyName("condition")]
+        public RemapCondition Condition { get; set; }
 
         private static List<string> MapKeys(string stringOfKeys)
         {

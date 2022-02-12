@@ -6,10 +6,10 @@
 #include "CppUnitTest.h"
 #pragma warning(pop)
 
+#include <keyboardmanager/common/UnitTestUtils.h>
 #include <keyboardmanager/KeyboardManagerEditorLibrary/BufferValidationHelpers.h>
 #include <common/interop/keyboard_layout.h>
 #include <common/interop/shared_constants.h>
-#include <functional>
 #include <keyboardmanager/KeyboardManagerEditorLibrary/ShortcutErrorType.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -99,16 +99,16 @@ namespace RemappingUITests
                 RemapBuffer remapBuffer;
 
                 // Add a row with A as the target
-                remapBuffer.push_back(std::make_pair(RemapBufferItem({ (DWORD)0, (DWORD)0x41 }), std::wstring()));
+                remapBuffer.emplace_back({  (DWORD)0, (DWORD)0x41 }), std::wstring()));
 
                 // Validate and update the element when selecting B on a row
                 ValidateAndUpdateKeyBufferElementArgs args = { 0, 0, 0x42 };
                 ShortcutErrorType error = BufferValidationHelpers::ValidateAndUpdateKeyBufferElement(args.elementRowIndex, args.elementColIndex, args.selectedCodeFromDropDown, remapBuffer);
 
                 // Assert that the element is validated and buffer is updated
-                Assert::AreEqual(true, error == ShortcutErrorType::NoError);
-                Assert::AreEqual((DWORD)0x42, std::get<DWORD>(remapBuffer[0].first[0]));
-                Assert::AreEqual((DWORD)0x41, std::get<DWORD>(remapBuffer[0].first[1]));
+                Assert::AreEqual(ShortcutErrorType::NoError, error);
+                Assert::AreEqual(VK_B, std::get<DWORD>(remapBuffer[0].mapping[0]));
+                Assert::AreEqual(VK_A, std::get<DWORD>(remapBuffer[0].mapping[1]));
             }
 
             // Test if the ValidateAndUpdateKeyBufferElement method is successful when setting a key to non-null in a valid key to shortcut
