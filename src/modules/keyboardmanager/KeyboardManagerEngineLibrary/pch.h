@@ -4,7 +4,9 @@
 #include <ProjectTelemetry.h>
 #include <shlwapi.h>
 #include <shellapi.h>
+#include <optional>
 #include <stdexcept>
+#include <string>
 #include <unordered_set>
 #include <winrt/base.h>
 #include <filesystem>
