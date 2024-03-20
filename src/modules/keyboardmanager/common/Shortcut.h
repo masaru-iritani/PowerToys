@@ -189,5 +189,11 @@ public:
 
 using KeyShortcutTextUnion = std::variant<DWORD, Shortcut, std::wstring>;
 using RemapBufferItem = std::vector<KeyShortcutTextUnion>;
-using RemapBufferRow = std::pair<RemapBufferItem, std::wstring>;
+
+using RemapBufferRow = struct
+{
+    RemapBufferItem mapping;
+    std::wstring appName;
+};
+
 using RemapBuffer = std::vector<RemapBufferRow>;
