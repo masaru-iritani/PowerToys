@@ -38,6 +38,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\common\interop\keyboard_layout.cpp" />
+    <ClCompile Include="..\KeyboardManagerEditorLibrary\RemapBuffer.cpp" />
     <ClCompile Include="Helpers.cpp" />
     <ClCompile Include="KeyboardEventHandlers.cpp" />
     <ClCompile Include="MappingConfiguration.cpp" />
@@ -47,6 +48,7 @@
     <ClCompile Include="Shortcut.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\KeyboardManagerEditorLibrary\RemapBuffer.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="KeyboardEventHandlers.h" />
     <ClInclude Include="MappingConfiguration.h" />

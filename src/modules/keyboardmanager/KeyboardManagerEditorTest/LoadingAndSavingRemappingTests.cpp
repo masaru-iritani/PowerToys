@@ -10,6 +10,7 @@
 #include <keyboardmanager/KeyboardManagerEditorLibrary/LoadingAndSavingRemappingHelper.h>
 #include <common/interop/shared_constants.h>
 #include <keyboardmanager/KeyboardManagerEditorLibrary/ShortcutErrorType.h>
+#include <keyboardmanager/KeyboardManagerEditorLibrary/RemapBuffer.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

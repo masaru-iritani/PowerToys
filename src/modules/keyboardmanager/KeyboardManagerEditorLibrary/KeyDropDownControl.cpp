@@ -12,6 +12,7 @@
 #include "EditorHelpers.h"
 #include "ShortcutErrorType.h"
 #include "EditorConstants.h"
+#include "RemapBuffer.h"
 
 // Initialized to null
 KBMEditor::KeyboardManagerState* KeyDropDownControl::keyboardManagerState = nullptr;

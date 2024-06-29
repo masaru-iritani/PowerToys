@@ -1,7 +1,6 @@
 #pragma once
 #include "ModifierKey.h"
 
-#include <compare>
 #include <tuple>
 #include <variant>
 
@@ -188,6 +187,5 @@ public:
 };
 
 using KeyShortcutTextUnion = std::variant<DWORD, Shortcut, std::wstring>;
-using RemapBufferItem = std::vector<KeyShortcutTextUnion>;
+using RemapBufferItem = std::array<KeyShortcutTextUnion, 2>;
 using RemapBufferRow = std::pair<RemapBufferItem, std::wstring>;
-using RemapBuffer = std::vector<RemapBufferRow>;

@@ -290,6 +290,52 @@ inline void CreateEditKeyboardWindowImpl(HINSTANCE hInst, KBMEditor::KeyboardMan
     LoadingAndSavingRemappingHelper::PreProcessRemapTable(singleKeyRemapCopy);
     LoadingAndSavingRemappingHelper::PreProcessRemapTable(singleKeyToTextRemapCopy);
 
+    auto deleteHandler = [&keyboardRemapControlObjects]() {
+        uint32_t rowIndex;
+        // Get index of delete button
+        UIElementCollection children = parent.Children();
+        bool indexFound = children.IndexOf(row, rowIndex);
+
+        // IndexOf could fail if the row got deleted and the button handler was invoked twice. In this case it should return
+        if (!indexFound)
+        {
+            return;
+        }
+
+        // Update accessible names and background for each row after the deleted row
+        for (uint32_t i = rowIndex + 1; i < children.Size(); i++)
+        {
+            StackPanel row = children.GetAt(i).as<StackPanel>();
+            StackPanel sourceCol = row.Children().GetAt(0).as<StackPanel>();
+            StackPanel targetCol = row.Children().GetAt(2).as<StackPanel>();
+            Button delButton = row.Children().GetAt(3).as<Button>();
+            UpdateAccessibleNames(sourceCol, targetCol, delButton, i);
+        }
+
+        if (auto automationPeer{ Automation::Peers::FrameworkElementAutomationPeer::FromElement(deleteRemapKeys) })
+        {
+            automationPeer.RaiseNotificationEvent(
+                Automation::Peers::AutomationNotificationKind::ActionCompleted,
+                Automation::Peers::AutomationNotificationProcessing::ImportantMostRecent,
+                GET_RESOURCE_STRING(IDS_DELETE_REMAPPING_EVENT),
+                L"KeyRemappingDeletedNotificationEvent" /* unique name for this notification category */);
+        }
+
+        children.RemoveAt(rowIndex);
+        try
+        {
+            // If a layout update has been triggered by other methods (e.g.: adapting to zoom level), this may throw an exception.
+            parent.UpdateLayout();
+        }
+        catch (...)
+        {
+        }
+        singleKeyRemapBuffer.erase(singleKeyRemapBuffer.begin() + rowIndex);
+
+        // delete the SingleKeyRemapControl objects so that they get destructed
+        keyboardRemapControlObjects.erase(keyboardRemapControlObjects.begin() + rowIndex);
+    };
+
     for (const auto& it : singleKeyRemapCopy)
     {
         SingleKeyRemapControl::AddNewControlKeyRemapRow(keyRemapTable, keyboardRemapControlObjects, it.first, it.second);

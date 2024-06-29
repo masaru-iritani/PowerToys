@@ -220,7 +220,7 @@ intptr_t KeyboardManagerEditor::HandleKeyboardHookEvent(LowlevelKeyboardEvent* d
 // Hook procedure definition
 LRESULT KeyboardManagerEditor::KeyHookProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
-    LowlevelKeyboardEvent event;
+    LowlevelKeyboardEvent event{};
     if (nCode == HC_ACTION)
     {
         event.lParam = reinterpret_cast<KBDLLHOOKSTRUCT*>(lParam);

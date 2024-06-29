@@ -245,8 +245,7 @@ inline void CreateEditShortcutsWindowImpl(HINSTANCE hInst, KBMEditor::KeyboardMa
     KeyDropDownControl::keyboardManagerState = &keyboardManagerState;
     KeyDropDownControl::mappingConfiguration = &mappingConfiguration;
 
-    // Clear the shortcut remap buffer
-    ShortcutControl::shortcutRemapBuffer.clear();
+    ShortcutControl::shortcutRemapBuffer.Clear();
 
     // Vector to store dynamically allocated control objects to avoid early destruction
     std::vector<std::vector<std::unique_ptr<ShortcutControl>>> keyboardRemapControlObjects;

@@ -3,6 +3,7 @@
 #include <keyboardmanager/common/Helpers.h>
 
 #include "ShortcutErrorType.h"
+#include "RemapBuffer.h"
 
 namespace BufferValidationHelpers
 {
