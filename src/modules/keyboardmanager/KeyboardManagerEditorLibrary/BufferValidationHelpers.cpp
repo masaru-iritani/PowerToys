@@ -7,7 +7,6 @@
 
 #include "KeyboardManagerEditorStrings.h"
 #include "KeyDropDownControl.h"
-#include "UIHelpers.h"
 #include "EditorHelpers.h"
 #include "EditorConstants.h"
 
