@@ -188,7 +188,7 @@ public:
 };
 
 using KeyShortcutTextUnion = std::variant<DWORD, Shortcut, std::wstring>;
-using RemapBufferItem = std::vector<KeyShortcutTextUnion>;
+using RemapBufferItem = std::array<KeyShortcutTextUnion, 2>;
 
 struct RemapBufferRow
 {
