@@ -172,7 +172,7 @@ public:
     winrt::hstring ToHstringVK() const;
 
     // Function to return a vector of key codes in the display order
-    std::vector<DWORD> GetKeyCodes();
+    std::vector<DWORD> GetKeyCodes() const;
 
     // Function to set a shortcut from a vector of key codes
     void SetKeyCodes(const std::vector<int32_t>& keys);
