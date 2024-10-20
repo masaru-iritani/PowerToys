@@ -194,6 +194,25 @@ struct RemapBufferRow
 {
     RemapBufferItem mapping{};
     std::wstring appName{};
+
+    inline void UpdateByDropDownSelection(int columnIndex, int dropDownIndex, DWORD keyCode)
+    {
+        const auto& currentKey = mapping.at(columnIndex);
+        if (dropDownIndex == 0)
+        {
+            mapping.at(columnIndex) = keyCode;
+        }
+        else
+        {
+            const Shortcut* currentShortcut = std::get_if<Shortcut>(&currentKey);
+            const DWORD* currentKeyCode = std::get_if<DWORD>(&currentKey);
+            std::vector<DWORD> currentKeyCodes = currentShortcut ? currentShortcut->GetKeyCodes() : std::vector<DWORD>{ *currentKeyCode };
+            std::vector<int32_t> keyCodes = std::vector<int32_t>(currentKeyCodes.size());
+            std::transform(currentKeyCodes.begin(), currentKeyCodes.end(), keyCodes.begin(), [](DWORD code) { return static_cast<int32_t>(code); });
+            keyCodes.at(dropDownIndex) = keyCode;
+            mapping.at(columnIndex) = Shortcut(keyCodes);
+        }
+    }
 };
 
 using RemapBuffer = std::vector<RemapBufferRow>;
