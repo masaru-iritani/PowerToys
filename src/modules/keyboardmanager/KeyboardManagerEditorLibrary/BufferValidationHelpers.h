@@ -1,6 +1,6 @@
 #pragma once
 
-#include <keyboardmanager/common/Helpers.h>
+#include <keyboardmanager/common/Shortcut.h>
 
 #include "ShortcutErrorType.h"
 
@@ -14,12 +14,11 @@ namespace BufferValidationHelpers
         ClearUnusedDropDowns
     };
 
-    // Helper function to verify if a key is being remapped to/from its combined key
-    bool IsKeyRemappingToItsCombinedKey(DWORD keyCode1, DWORD keyCode2);
+    // Update the remap buffer based on the selected drop down index.
+    static void UpdateRemapBuffer(RemapBuffer& remapBuffer, int rowIndex, int columnIndex, int dropDownIndex, DWORD keyCode)
+    {
+        remapBuffer.at(rowIndex).UpdateByDropDownSelection(columnIndex, dropDownIndex, keyCode);
+    }
 
-    // Function to validate and update an element of the key remap buffer when the selection has changed
-    ShortcutErrorType ValidateAndUpdateKeyBufferElement(int rowIndex, int colIndex, int selectedKeyCode, RemapBuffer& remapBuffer);
-
-    // Function to validate an element of the shortcut remap buffer when the selection has changed
-    std::pair<ShortcutErrorType, DropDownAction> ValidateShortcutBufferElement(int rowIndex, int colIndex, uint32_t dropDownIndex, const std::vector<int32_t>& selectedCodes, std::wstring appName, bool isHybridControl, const RemapBuffer& remapBuffer, bool dropDownFound);
+    static constexpr std::vector<ShortcutErrorType> ValidateRemapBuffer(const RemapBuffer& buffer);
 }

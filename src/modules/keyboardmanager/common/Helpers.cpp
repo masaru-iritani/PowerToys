@@ -54,13 +54,13 @@ namespace Helpers
         return 1ull << 31;
     }
     // Function to check if the key is a modifier key
-    bool IsModifierKey(DWORD key)
+    constexpr bool IsModifierKey(DWORD key)
     {
         return (GetKeyType(key) != KeyType::Action);
     }
 
     // Function to get the combined key for modifier keys
-    DWORD GetCombinedKey(DWORD key)
+    constexpr DWORD GetCombinedKey(DWORD key)
     {
         switch (key)
         {
@@ -82,7 +82,7 @@ namespace Helpers
     }
 
     // Function to get the type of the key
-    KeyType GetKeyType(DWORD key)
+    constexpr KeyType GetKeyType(DWORD key)
     {
         switch (key)
         {

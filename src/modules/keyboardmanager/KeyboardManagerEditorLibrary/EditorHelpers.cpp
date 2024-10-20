@@ -135,7 +135,7 @@ namespace EditorHelpers
     }
 
     // Function to check if the shortcut is illegal (i.e. Win+L or Ctrl+Alt+Del)
-    ShortcutErrorType IsShortcutIllegal(Shortcut shortcut)
+    constexpr ShortcutErrorType IsShortcutIllegal(Shortcut shortcut)
     {
         // Win+L
         if (shortcut.winKey != ModifierKey::Disabled && shortcut.ctrlKey == ModifierKey::Disabled && shortcut.altKey == ModifierKey::Disabled && shortcut.shiftKey == ModifierKey::Disabled && shortcut.actionKey == 0x4C)

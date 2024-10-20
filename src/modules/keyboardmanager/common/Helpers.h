@@ -22,13 +22,13 @@ namespace Helpers
     DWORD GetNumpadOriginEncodingBit();
 
     // Function to check if the key is a modifier key
-    bool IsModifierKey(DWORD key);
+    constexpr bool IsModifierKey(DWORD key);
 
     // Function to get the combined key for modifier keys
-    DWORD GetCombinedKey(DWORD key);
+    constexpr DWORD GetCombinedKey(DWORD key);
 
     // Function to get the type of the key
-    KeyType GetKeyType(DWORD key);
+    constexpr KeyType GetKeyType(DWORD key);
 
     // Function to set the value of a key event based on the arguments
     void SetKeyEvent(std::vector<INPUT>& keyEventArray, DWORD inputType, WORD keyCode, DWORD flags, ULONG_PTR extraInfo);
