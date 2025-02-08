@@ -495,6 +495,6 @@ void KeyDropDownControl::AddShortcutToControl(Shortcut shortcut, StackPanel tabl
 // Get number of selected keys. Do not count -1 and 0 values as they stand for Not selected and None
 int KeyDropDownControl::GetNumberOfSelectedKeys(std::vector<int32_t> keyCodes)
 {
-    return (int)std::count_if(keyCodes.begin(), keyCodes.end(), [](int32_t a) { return a != VK_INVALID && a != 0; });
+    return (int)std::count_if(keyCodes.begin(), keyCodes.end(), [](int32_t a) { return a != VK_INVALID && a != VK_NULL; });
 }
 #pragma warning(pop)

@@ -150,7 +150,7 @@ namespace RemappingUITests
             RemapBuffer remapBuffer;
 
             // Remap A to NULL
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', (DWORD)0 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', VK_NULL }), L"" });
 
             // Assert that remapping set is invalid
             bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::RemapUnsuccessful);
@@ -393,7 +393,7 @@ namespace RemappingUITests
             s2.SetKey(VK_LMENU);
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', 'B' }), L"" });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'B', s1 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'C', (DWORD)0 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'C', VK_NULL }), L"" });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'D', s2 }), L"" });
 
             // Apply the single key remaps from the buffer to the keyboard manager state variable
@@ -498,11 +498,11 @@ namespace RemappingUITests
             dest4.SetKey(VK_CONTROL);
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, dest1 }), L"" });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src2, dest2 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src3, (DWORD)0 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src3, VK_NULL }), L"" });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src4, dest4 }), L"" });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src3, dest2 }), testApp1 });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src4, dest1 }), testApp1 });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, (DWORD)0 }), testApp1 });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, VK_NULL }), testApp1 });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src2, dest4 }), testApp1 });
 
             // Apply the shortcut remaps from the buffer to the keyboard manager state variable

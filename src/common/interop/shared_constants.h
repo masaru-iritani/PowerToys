@@ -133,3 +133,4 @@ namespace CommonSharedConstants
 }
 
 constexpr int32_t VK_INVALID = -1;
+constexpr DWORD VK_NULL = 0;

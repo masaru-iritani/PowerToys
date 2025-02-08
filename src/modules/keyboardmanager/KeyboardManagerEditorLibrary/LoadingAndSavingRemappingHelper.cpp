@@ -61,7 +61,7 @@ namespace LoadingAndSavingRemappingHelper
             DWORD ogKey = std::get<DWORD>(remappings[i].mapping[0]);
             KeyShortcutTextUnion newKey = remappings[i].mapping[1];
 
-            const bool hasValidKeyRemapping = newKey.index() == 0 && std::get<DWORD>(newKey) != 0;
+            const bool hasValidKeyRemapping = newKey.index() == 0 && std::get<DWORD>(newKey) != VK_NULL;
             const bool hasValidShortcutRemapping = newKey.index() == 1 && EditorHelpers::IsValidShortcut(std::get<Shortcut>(newKey));
             const bool hasValidTextRemapping = newKey.index() == 2 && !std::get<std::wstring>(newKey).empty();
             if (ogKey != NULL && (hasValidKeyRemapping || hasValidShortcutRemapping || hasValidTextRemapping))

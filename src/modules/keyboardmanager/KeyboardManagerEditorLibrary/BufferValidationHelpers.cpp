@@ -69,13 +69,13 @@ namespace BufferValidationHelpers
             }
             else
             {
-                remapBuffer[rowIndex].mapping[colIndex] = (DWORD)0;
+                remapBuffer[rowIndex].mapping[colIndex] = VK_NULL;
             }
         }
         else
         {
             // Reset to null if the key is not found
-            remapBuffer[rowIndex].mapping[colIndex] = (DWORD)0;
+            remapBuffer[rowIndex].mapping[colIndex] = VK_NULL;
         }
 
         return errorType;
@@ -224,7 +224,7 @@ namespace BufferValidationHelpers
             KeyShortcutTextUnion tempShortcut;
             if (isHybridControl && KeyDropDownControl::GetNumberOfSelectedKeys(selectedCodes) == 1)
             {
-                tempShortcut = (DWORD)*std::find_if(selectedCodes.begin(), selectedCodes.end(), [](int32_t a) { return a != VK_INVALID && a != 0; });
+                tempShortcut = (DWORD)*std::find_if(selectedCodes.begin(), selectedCodes.end(), [](int32_t a) { return a != VK_INVALID && a != VK_NULL; });
             }
             else
             {

@@ -201,7 +201,7 @@ void SingleKeyRemapControl::AddNewControlKeyRemapRow(StackPanel& parent, std::ve
     else
     {
         // Initialize both keys to NULL
-        singleKeyRemapBuffer.push_back(RemapBufferRow{ RemapBufferItem{ (DWORD)0, (DWORD)0 }, L"" });
+        singleKeyRemapBuffer.push_back(RemapBufferRow{ RemapBufferItem{ VK_NULL, VK_NULL }, L"" });
     }
 
     // Delete row button

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <common/interop/shared_constants.h>
 #include <keyboardmanager/common/Shortcut.h>
 
 #include <KeyDropDownControl.h>
@@ -54,7 +55,7 @@ public:
     SingleKeyRemapControl(StackPanel table, StackPanel row, const int colIndex);
 
     // Function to add a new row to the remap keys table. If the originalKey and newKey args are provided, then the displayed remap keys are set to those values.
-    static void AddNewControlKeyRemapRow(StackPanel& parent, std::vector<std::vector<std::unique_ptr<SingleKeyRemapControl>>>& keyboardRemapControlObjects, const DWORD originalKey = 0, const KeyShortcutTextUnion newKey = (DWORD)0);
+    static void AddNewControlKeyRemapRow(StackPanel& parent, std::vector<std::vector<std::unique_ptr<SingleKeyRemapControl>>>& keyboardRemapControlObjects, const DWORD originalKey = VK_NULL, const KeyShortcutTextUnion newKey = VK_NULL);
 
     // Function to return the stack panel element of the SingleKeyRemapControl. This is the externally visible UI element which can be used to add it to other layouts
     winrt::Windows::UI::Xaml::Controls::StackPanel getSingleKeyRemapControl();
