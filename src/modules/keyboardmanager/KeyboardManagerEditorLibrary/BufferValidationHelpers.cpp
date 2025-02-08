@@ -26,7 +26,7 @@ namespace BufferValidationHelpers
         ShortcutErrorType errorType = ShortcutErrorType::NoError;
 
         // Check if the element was not found or the index exceeds the known keys
-        if (selectedKeyCode != -1)
+        if (selectedKeyCode != VK_INVALID)
         {
             // Check if the value being set is the same as the other column
             if (remapBuffer[rowIndex].mapping[std::abs(colIndex - 1)].index() == 0)
@@ -87,9 +87,9 @@ namespace BufferValidationHelpers
         BufferValidationHelpers::DropDownAction dropDownAction = BufferValidationHelpers::DropDownAction::NoAction;
         ShortcutErrorType errorType = ShortcutErrorType::NoError;
         size_t dropDownCount = selectedCodes.size();
-        DWORD selectedKeyCode = dropDownFound ? selectedCodes[dropDownIndex] : -1;
+        DWORD selectedKeyCode = dropDownFound ? selectedCodes[dropDownIndex] : VK_INVALID;
 
-        if (selectedKeyCode != -1 && dropDownFound)
+        if (selectedKeyCode != VK_INVALID && dropDownFound)
         {
             // If only 1 drop down and action key is chosen: Warn that a modifier must be chosen (if the drop down is not for a hybrid scenario)
             if (dropDownCount == 1 && !Helpers::IsModifierKey(selectedKeyCode) && !isHybridControl)
@@ -191,7 +191,7 @@ namespace BufferValidationHelpers
                     bool isClear = true;
                     for (int i = dropDownIndex + 1; i < static_cast<int>(dropDownCount); i++)
                     {
-                        if (selectedCodes[i] != -1)
+                        if (selectedCodes[i] != VK_INVALID)
                         {
                             isClear = false;
                             break;
@@ -224,7 +224,7 @@ namespace BufferValidationHelpers
             KeyShortcutTextUnion tempShortcut;
             if (isHybridControl && KeyDropDownControl::GetNumberOfSelectedKeys(selectedCodes) == 1)
             {
-                tempShortcut = (DWORD)*std::find_if(selectedCodes.begin(), selectedCodes.end(), [](int32_t a) { return a != -1 && a != 0; });
+                tempShortcut = (DWORD)*std::find_if(selectedCodes.begin(), selectedCodes.end(), [](int32_t a) { return a != VK_INVALID && a != 0; });
             }
             else
             {
