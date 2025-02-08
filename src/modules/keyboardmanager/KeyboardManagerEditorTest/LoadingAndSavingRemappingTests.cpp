@@ -32,8 +32,7 @@ namespace RemappingUITests
             RemapBuffer remapBuffer;
 
             // Assert that remapping set is valid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::NoError, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is successful when valid key to key remaps are passed
@@ -46,8 +45,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is valid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::NoError, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is successful when valid key to shortcut remaps are passed
@@ -66,8 +64,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is valid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::NoError, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is successful when valid shortcut to key remaps are passed
@@ -86,8 +83,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is valid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::NoError, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is successful when valid shortcut to shortcut remaps are passed
@@ -112,8 +108,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is valid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::NoError, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is successful when valid remaps are passed
@@ -140,8 +135,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is valid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::NoError, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is unsuccessful when remaps with null keys are passed
@@ -153,8 +147,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is invalid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::RemapUnsuccessful);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::RemapUnsuccessful, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is unsuccessful when remaps with invalid shortcuts are passed
@@ -168,8 +161,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is invalid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::RemapUnsuccessful);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::RemapUnsuccessful, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is unsuccessful when remaps with the same key remapped twice are passed
@@ -185,8 +177,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is invalid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::RemapUnsuccessful);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::RemapUnsuccessful, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is unsuccessful when remaps with the same shortcut remapped twice are passed
@@ -205,8 +196,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is invalid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::RemapUnsuccessful);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::RemapUnsuccessful, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is unsuccessful when app specific remaps with the same shortcut remapped twice for the same target app are passed
@@ -225,8 +215,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is invalid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::RemapUnsuccessful);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::RemapUnsuccessful, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the CheckIfRemappingsAreValid method is successful when app specific remaps with the same shortcut remapped twice for different target apps are passed
@@ -245,8 +234,7 @@ namespace RemappingUITests
             };
 
             // Assert that remapping set is valid
-            bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
-            Assert::IsTrue(isSuccess);
+            Assert::AreEqual(ShortcutErrorType::NoError, LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer));
         }
 
         // Test if the GetOrphanedKeys method return an empty vector on passing no remaps
@@ -326,8 +314,7 @@ namespace RemappingUITests
             expectedTable[VK_SHIFT] = 'C';
             expectedTable[CommonSharedConstants::VK_WIN_BOTH] = 'D';
 
-            bool areTablesEqual = (expectedTable == remapTable);
-            Assert::IsTrue(areTablesEqual);
+            Assert::IsTrue(expectedTable == remapTable);
         }
 
         // Test if the PreProcessRemapTable method does not combines any of the modifier pairs when the left and right modifiers are remapped to different targets
@@ -359,8 +346,7 @@ namespace RemappingUITests
             expectedTable[VK_LWIN] = 'A';
             expectedTable[VK_RWIN] = 'B';
 
-            bool areTablesEqual = (expectedTable == remapTable);
-            Assert::IsTrue(areTablesEqual);
+            Assert::IsTrue(expectedTable == remapTable);
         }
 
         // Test if the ApplySingleKeyRemappings method resets the keyboard manager state's single key remappings on passing an empty buffer
@@ -405,8 +391,7 @@ namespace RemappingUITests
             expectedTable['A'] = 'B';
             expectedTable['B'] = s1;
 
-            bool areTablesEqual = (expectedTable == testShortcuts.singleKeyReMap);
-            Assert::IsTrue(areTablesEqual);
+            Assert::IsTrue(expectedTable == testShortcuts.singleKeyReMap);
         }
 
         // Test if the ApplySingleKeyRemappings method splits common modifiers to their left and right version when copying to the keyboard manager state variable if remappings from common modifiers are passed
@@ -435,8 +420,7 @@ namespace RemappingUITests
             expectedTable[VK_LWIN] = 'D';
             expectedTable[VK_RWIN] = 'D';
 
-            bool areTablesEqual = (expectedTable == testShortcuts.singleKeyReMap);
-            Assert::IsTrue(areTablesEqual);
+            Assert::IsTrue(expectedTable == testShortcuts.singleKeyReMap);
         }
 
         // Test if the ApplyShortcutRemappings method resets the keyboard manager state's os level and app specific shortcut remappings on passing an empty buffer
@@ -519,10 +503,8 @@ namespace RemappingUITests
             expectedAppSpecificLevelTable[testApp1][src3] = RemapShortcut(dest2);
             expectedAppSpecificLevelTable[testApp1][src4] = RemapShortcut(dest1);
 
-            bool areOSLevelTablesEqual = (expectedOSLevelTable == testShortcuts.osLevelShortcutReMap);
-            bool areAppSpecificTablesEqual = (expectedAppSpecificLevelTable == testShortcuts.appSpecificShortcutReMap);
-            Assert::IsTrue(areOSLevelTablesEqual);
-            Assert::IsTrue(areAppSpecificTablesEqual);
+            Assert::IsTrue(expectedOSLevelTable == testShortcuts.osLevelShortcutReMap);
+            Assert::IsTrue(expectedAppSpecificLevelTable == testShortcuts.appSpecificShortcutReMap);
         }
     };
 }
