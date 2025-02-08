@@ -191,7 +191,7 @@ namespace RemappingUITests
                 RemapBuffer remapBuffer;
 
                 // Add a row from Ctrl->B and a row with C as target
-                remapBuffer.push_back(RemapBufferRow{ RemapBufferItem{ (DWORD)VK_CONTROL, 'B' }, L"" });
+                remapBuffer.push_back(RemapBufferRow{ RemapBufferItem{ VK_CONTROL, 'B' }, L"" });
                 remapBuffer.push_back(RemapBufferRow{ RemapBufferItem{ (DWORD)0, 'C' }, L"" });
 
                 // Validate and update the element when selecting LCtrl on second row
@@ -210,7 +210,7 @@ namespace RemappingUITests
                 RemapBuffer remapBuffer;
 
                 // Add a row from Ctrl->B and a row with Ctrl+A as target
-                remapBuffer.push_back(RemapBufferRow{ RemapBufferItem{ (DWORD)VK_CONTROL, 'B' }, L"" });
+                remapBuffer.push_back(RemapBufferRow{ RemapBufferItem{ VK_CONTROL, 'B' }, L"" });
                 remapBuffer.push_back(RemapBufferRow{ RemapBufferItem{ (DWORD)0, Shortcut(std::vector<int32_t>{ VK_CONTROL, 'A' }) }, L"" });
 
                 // Validate and update the element when selecting LCtrl on second row
@@ -987,9 +987,9 @@ namespace RemappingUITests
                 // Case 6: Validate the element when selecting None (0) on first dropdown of hybrid second column with shortcut
                 testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ 0, 'A' }, L"", true, RemapBufferRow{ RemapBufferItem{ 'A', std::vector<int32_t>{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 7: Validate the element when selecting Null (-1) on second dropdown of hybrid second column with shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ -1, VK_CONTROL }, L"", true, RemapBufferRow{ RemapBufferItem{ (DWORD)VK_CONTROL, std::vector<int32_t>{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ -1, VK_CONTROL }, L"", true, RemapBufferRow{ RemapBufferItem{ VK_CONTROL, std::vector<int32_t>{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 8: Validate the element when selecting None (0) on second dropdown of hybrid second column with shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ 0, VK_CONTROL }, L"", true, RemapBufferRow{ RemapBufferItem{ (DWORD)VK_CONTROL, std::vector<int32_t>{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ 0, VK_CONTROL }, L"", true, RemapBufferRow{ RemapBufferItem{ VK_CONTROL, std::vector<int32_t>{ VK_CONTROL, 'A' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange

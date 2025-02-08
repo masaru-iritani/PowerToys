@@ -977,7 +977,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
 
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1014,7 +1014,7 @@ namespace RemappingLogicTests
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
 
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1054,7 +1054,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_CONTROL);
+            testState.AddOSLevelShortcut(src, VK_CONTROL);
 
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1089,7 +1089,7 @@ namespace RemappingLogicTests
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_CONTROL);
+            testState.AddOSLevelShortcut(src, VK_CONTROL);
 
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1127,7 +1127,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1153,7 +1153,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_CONTROL);
+            testState.AddOSLevelShortcut(src, VK_CONTROL);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1203,7 +1203,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1229,7 +1229,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_CONTROL);
+            testState.AddOSLevelShortcut(src, VK_CONTROL);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1277,7 +1277,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'B' } },
@@ -1302,7 +1302,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'B' } },
@@ -1330,7 +1330,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
             // Remap Shift+Ctrl+A to Ctrl+V
             src.SetKey(VK_SHIFT);
             Shortcut dest;
@@ -1362,7 +1362,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
             // Remap Shift+Ctrl+A to B
             src.SetKey(VK_SHIFT);
             testState.AddOSLevelShortcut(src, 'B');
@@ -1391,7 +1391,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
 
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1433,7 +1433,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'A' } },
@@ -1474,7 +1474,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
+            testState.AddOSLevelShortcut(src, VK_MENU);
 
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1728,7 +1728,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(CommonSharedConstants::VK_WIN_BOTH);
             src.SetKey(VK_CAPITAL);
-            testState.AddOSLevelShortcut(src, (DWORD)VK_CONTROL);
+            testState.AddOSLevelShortcut(src, VK_CONTROL);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_LWIN } },
@@ -1823,7 +1823,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_CAPITAL);
+            testState.AddOSLevelShortcut(src, VK_CAPITAL);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1853,7 +1853,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey('A');
-            testState.AddOSLevelShortcut(src, (DWORD)VK_CAPITAL);
+            testState.AddOSLevelShortcut(src, VK_CAPITAL);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },

@@ -415,9 +415,9 @@ namespace RemappingUITests
             RemapBuffer remapBuffer;
 
             // Add Ctrl->A, Alt->B, Shift->C and Win->D remappings to the buffer
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)VK_CONTROL, 'A' }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)VK_MENU, 'B' }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)VK_SHIFT, 'C' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ VK_CONTROL, 'A' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ VK_MENU, 'B' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ VK_SHIFT, 'C' }), L"" });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)CommonSharedConstants::VK_WIN_BOTH, 'D' }), L"" });
 
             // Apply the single key remaps from the buffer to the keyboard manager state variable

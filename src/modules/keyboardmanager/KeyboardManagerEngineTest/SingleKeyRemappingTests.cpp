@@ -131,7 +131,7 @@ namespace RemappingLogicTests
             });
 
             // Remap Caps Lock to Ctrl
-            testState.AddSingleKeyRemap(VK_CAPITAL, (DWORD)VK_CONTROL);
+            testState.AddSingleKeyRemap(VK_CAPITAL, VK_CONTROL);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CAPITAL } },
@@ -156,7 +156,7 @@ namespace RemappingLogicTests
             });
 
             // Remap Ctrl to Caps Lock
-            testState.AddSingleKeyRemap(VK_CONTROL, (DWORD)VK_CAPITAL);
+            testState.AddSingleKeyRemap(VK_CONTROL, VK_CAPITAL);
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
