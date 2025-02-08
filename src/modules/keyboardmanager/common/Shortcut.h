@@ -93,6 +93,7 @@ public:
 
     // Constructor to initialize shortcut from a list of keys
     Shortcut(const std::vector<int32_t>& keys);
+    Shortcut(std::initializer_list<int32_t> keys);
 
     inline friend auto operator<=>(const Shortcut& lhs, const Shortcut& rhs) noexcept
     {

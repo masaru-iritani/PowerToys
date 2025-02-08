@@ -204,8 +204,8 @@ namespace EditorHelpersTests
         TEST_METHOD (DoKeysOverlap_ShouldReturnNoError_OnPassingInvalidShortcutForOneOfTheArguments)
         {
             // Arrange
-            Shortcut s1(std::vector<int32_t>{ NULL });
-            Shortcut s2(std::vector<int32_t>{ VK_CONTROL, 'A' });
+            Shortcut s1{ NULL };
+            Shortcut s2{ VK_CONTROL, 'A' };
 
             // Act
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
@@ -218,7 +218,7 @@ namespace EditorHelpersTests
         TEST_METHOD (DoKeysOverlap_ShouldReturnSameShortcutPreviouslyMapped_OnPassingSameShortcutForBothArguments)
         {
             // Arrange
-            Shortcut s1(std::vector<int32_t>{ VK_CONTROL, 'A' });
+            Shortcut s1{ VK_CONTROL, 'A' };
             Shortcut s2 = s1;
 
             // Act
@@ -232,8 +232,8 @@ namespace EditorHelpersTests
         TEST_METHOD (DoKeysOverlap_ShouldReturnNoError_OnPassingShortcutsWithDifferentActionKeys)
         {
             // Arrange
-            Shortcut s1(std::vector<int32_t>{ VK_CONTROL, 'B' });
-            Shortcut s2(std::vector<int32_t>{ VK_CONTROL, 'A' });
+            Shortcut s1{ VK_CONTROL, 'B' };
+            Shortcut s2{ VK_CONTROL, 'A' };
 
             // Act
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
@@ -246,8 +246,8 @@ namespace EditorHelpersTests
         TEST_METHOD (DoKeysOverlap_ShouldReturnNoError_OnPassingShortcutsWithDifferentModifiers)
         {
             // Arrange
-            Shortcut s1(std::vector<int32_t>{ VK_CONTROL, 'B' });
-            Shortcut s2(std::vector<int32_t>{ VK_SHIFT, 'B' });
+            Shortcut s1{VK_CONTROL, 'B'};
+            Shortcut s2{VK_SHIFT, 'B'};
 
             // Act
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
@@ -260,8 +260,8 @@ namespace EditorHelpersTests
         TEST_METHOD (DoKeysOverlap_ShouldReturnConflictingModifierShortcut_OnPassingShortcutsWithLeftModifierAndCommonModifierOfSameType)
         {
             // Arrange
-            Shortcut s1(std::vector<int32_t>{ VK_LCONTROL, 'B' });
-            Shortcut s2(std::vector<int32_t>{ VK_CONTROL, 'B' });
+            Shortcut s1{VK_LCONTROL, 'B'};
+            Shortcut s2{VK_CONTROL, 'B'};
 
             // Act
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
@@ -274,8 +274,8 @@ namespace EditorHelpersTests
         TEST_METHOD (DoKeysOverlap_ShouldReturnConflictingModifierShortcut_OnPassingShortcutsWithRightModifierAndCommonModifierOfSameType)
         {
             // Arrange
-            Shortcut s1(std::vector<int32_t>{ VK_RCONTROL, 'B' });
-            Shortcut s2(std::vector<int32_t>{ VK_CONTROL, 'B' });
+            Shortcut s1{VK_RCONTROL, 'B'};
+            Shortcut s2{VK_CONTROL, 'B'};
 
             // Act
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
@@ -288,8 +288,8 @@ namespace EditorHelpersTests
         TEST_METHOD (DoKeysOverlap_ShouldReturnConflictingModifierShortcut_OnPassingShortcutsWithLeftModifierAndRightModifierOfSameType)
         {
             // Arrange
-            Shortcut s1(std::vector<int32_t>{ VK_LCONTROL, 'B' });
-            Shortcut s2(std::vector<int32_t>{ VK_RCONTROL, 'B' });
+            Shortcut s1{VK_LCONTROL, 'B'};
+            Shortcut s2{VK_RCONTROL, 'B'};
 
             // Act
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);

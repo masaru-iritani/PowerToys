@@ -61,6 +61,11 @@ Shortcut::Shortcut(const std::vector<int32_t>& keys)
     SetKeyCodes(keys);
 }
 
+Shortcut::Shortcut(std::initializer_list<int32_t> keys)
+{
+    SetKeyCodes(keys);
+}
+
 // Function to return the number of keys in the shortcut
 int Shortcut::Size() const
 {

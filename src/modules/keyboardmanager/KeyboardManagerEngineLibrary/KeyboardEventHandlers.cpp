@@ -69,7 +69,7 @@ namespace
                         if (key.shiftKey != ModifierKey::Disabled)
                         {
                             if (state.numpadKeyPressed[it->second])
-                            { 
+                            {
                                 //replace it with original numpad
                                 data->lParam->vkCode = it->second;
                             }
@@ -218,7 +218,7 @@ namespace KeyboardEventHandlers
     }
 
     /* This feature has not been enabled (code from proof of concept stage)
-    * 
+    *
     // Function to a change a key's behavior from toggle to modifier
     __declspec(dllexport) intptr_t HandleSingleKeyToggleToModEvent(InputInterface& ii, LowlevelKeyboardEvent* data, State& State) noexcept
     {
@@ -745,7 +745,7 @@ namespace KeyboardEventHandlers
                         else
                         {
                             // Check if the keyboard state is clear apart from the target remap key (by creating a temp Shortcut object with the target key)
-                            bool isKeyboardStateClear = Shortcut(std::vector<int32_t>({ Helpers::FilterArtificialKeys(std::get<DWORD>(it->second.targetShortcut)) })).IsKeyboardStateClearExceptShortcut(ii);
+                            bool isKeyboardStateClear = Shortcut{ Helpers::FilterArtificialKeys(std::get<DWORD>(it->second.targetShortcut)) }.IsKeyboardStateClearExceptShortcut(ii);
 
                             // If the keyboard state is clear, we release the target key but do not reset the remap state
                             if (isKeyboardStateClear)
@@ -1266,7 +1266,7 @@ namespace KeyboardEventHandlers
         }
 
         /*std::thread{ [message] {
-    
+
         } }.detach();*/
     }
 
