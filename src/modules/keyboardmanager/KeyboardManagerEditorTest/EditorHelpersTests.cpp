@@ -29,7 +29,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoKeysOverlap(key1, key2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::SameKeyPreviouslyMapped);
+            Assert::AreEqual(ShortcutErrorType::SameKeyPreviouslyMapped, result);
         }
 
         // Test if the DoKeysOverlap method returns ConflictingModifierKey on passing left modifier and common modifier
@@ -43,7 +43,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoKeysOverlap(key1, key2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::ConflictingModifierKey);
+            Assert::AreEqual(ShortcutErrorType::ConflictingModifierKey, result);
         }
 
         // Test if the DoKeysOverlap method returns ConflictingModifierKey on passing right modifier and common modifier
@@ -57,7 +57,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoKeysOverlap(key1, key2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::ConflictingModifierKey);
+            Assert::AreEqual(ShortcutErrorType::ConflictingModifierKey, result);
         }
 
         // Test if the DoKeysOverlap method returns NoError on passing left modifier and right modifier
@@ -71,7 +71,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoKeysOverlap(key1, key2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::NoError);
+            Assert::AreEqual(ShortcutErrorType::NoError, result);
         }
 
         // Test if the DoKeysOverlap method returns NoError on passing keys of different types
@@ -85,7 +85,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoKeysOverlap(key1, key2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::NoError);
+            Assert::AreEqual(ShortcutErrorType::NoError, result);
         }
 
         // Test if the DoKeysOverlap method returns NoError on passing different action keys
@@ -99,7 +99,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoKeysOverlap(key1, key2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::NoError);
+            Assert::AreEqual(ShortcutErrorType::NoError, result);
         }
 
         // Test if the CheckRepeatedModifier method returns true on passing vector with same modifier repeated
@@ -141,7 +141,7 @@ namespace EditorHelpersTests
             Assert::IsFalse(result);
         }
 
-        
+
         // Test if the IsValidShortcut method returns false on passing shortcut with null action key
         TEST_METHOD (IsValidShortcut_ShouldReturnFalse_OnPassingShortcutWithNullActionKey)
         {
@@ -211,7 +211,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::NoError);
+            Assert::AreEqual(ShortcutErrorType::NoError, result);
         }
 
         // Test if the DoKeysOverlap method returns SameShortcutPreviouslyMapped on passing same shortcut for both arguments
@@ -225,7 +225,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::SameShortcutPreviouslyMapped);
+            Assert::AreEqual(ShortcutErrorType::SameShortcutPreviouslyMapped, result);
         }
 
         // Test if the DoKeysOverlap method returns NoError on passing shortcuts with different action keys
@@ -239,7 +239,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::NoError);
+            Assert::AreEqual(ShortcutErrorType::NoError, result);
         }
 
         // Test if the DoKeysOverlap method returns NoError on passing shortcuts with different modifiers
@@ -253,7 +253,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::NoError);
+            Assert::AreEqual(ShortcutErrorType::NoError, result);
         }
 
         // Test if the DoKeysOverlap method returns ConflictingModifierShortcut on passing shortcuts with left modifier and common modifier
@@ -267,7 +267,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::ConflictingModifierShortcut);
+            Assert::AreEqual(ShortcutErrorType::ConflictingModifierShortcut, result);
         }
 
         // Test if the DoKeysOverlap method returns ConflictingModifierShortcut on passing shortcuts with right modifier and common modifier
@@ -281,7 +281,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::ConflictingModifierShortcut);
+            Assert::AreEqual(ShortcutErrorType::ConflictingModifierShortcut, result);
         }
 
         // Test if the DoKeysOverlap method returns ConflictingModifierShortcut on passing shortcuts with left modifier and right modifier
@@ -295,7 +295,7 @@ namespace EditorHelpersTests
             auto result = EditorHelpers::DoShortcutsOverlap(s1, s2);
 
             // Assert
-            Assert::IsTrue(result == ShortcutErrorType::NoError);
+            Assert::AreEqual(ShortcutErrorType::NoError, result);
         }
     };
 }
