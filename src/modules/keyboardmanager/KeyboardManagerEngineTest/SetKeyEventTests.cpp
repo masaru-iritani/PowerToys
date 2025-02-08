@@ -44,7 +44,7 @@ namespace RemappingLogicTests
                 // Set key events for all the extended keys
                 Helpers::SetKeyEvent(inputs, INPUT_KEYBOARD, keyCodes[i], 0, 0);
                 // Extended key flag should be set
-                Assert::AreEqual(true, bool(inputs[i].ki.dwFlags & KEYEVENTF_EXTENDEDKEY));
+                Assert::IsTrue(bool(inputs[i].ki.dwFlags & KEYEVENTF_EXTENDEDKEY));
             }
         }
 

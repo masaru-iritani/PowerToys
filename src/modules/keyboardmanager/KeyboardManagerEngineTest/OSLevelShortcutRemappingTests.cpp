@@ -1143,7 +1143,7 @@ namespace RemappingLogicTests
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
             // Shortcut invoked state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isShortcutInvoked);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
 
         // Test if keyboard state is not reverted for a shortcut to a single key remap (target key is a modifier in the shortcut) on key down followed by releasing the action key
@@ -1168,7 +1168,7 @@ namespace RemappingLogicTests
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
             // Shortcut invoked state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isShortcutInvoked);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
 
         // Test if keyboard state is not reverted for a shortcut to a single key remap (target key is the action key in the shortcut) on key down followed by releasing the action key
@@ -1193,7 +1193,7 @@ namespace RemappingLogicTests
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
             // Shortcut invoked state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isShortcutInvoked);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
 
         // Test if keyboard state is reverted for a shortcut to a single key remap (target key is not a part of the shortcut) on key down followed by releasing the modifier key
@@ -1315,10 +1315,10 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs);
 
             // Alt, A should be false, Ctrl, B should be true
-            Assert::AreEqual(true, mockedInputHandler.GetVirtualKeyState(VK_CONTROL));
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(VK_CONTROL));
             Assert::AreEqual(false, mockedInputHandler.GetVirtualKeyState(0x41));
             Assert::AreEqual(false, mockedInputHandler.GetVirtualKeyState(VK_MENU));
-            Assert::AreEqual(true, mockedInputHandler.GetVirtualKeyState(0x42));
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(0x42));
             // Shortcut invoked state should be false
             Assert::AreEqual(false, testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -1408,7 +1408,7 @@ namespace RemappingLogicTests
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
             // Shortcut invoked state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isShortcutInvoked);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'A', .dwFlags = KEYEVENTF_KEYUP } },
@@ -1449,7 +1449,7 @@ namespace RemappingLogicTests
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
             // Shortcut invoked state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isShortcutInvoked);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL, .dwFlags = KEYEVENTF_KEYUP } },
@@ -1490,7 +1490,7 @@ namespace RemappingLogicTests
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
             // Shortcut invoked state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isShortcutInvoked);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'B' } },
@@ -1897,7 +1897,7 @@ namespace RemappingLogicTests
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
 
             // Shortcut invoked state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isShortcutInvoked);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
 
         // Tests for shortcut disable remappings
@@ -2009,7 +2009,7 @@ namespace RemappingLogicTests
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(actionKey), false);
             // Shortcut invoked state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isShortcutInvoked);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'B' } },
@@ -2046,7 +2046,7 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs);
 
             // IsOriginalActionKeyPressed state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
         }
 
         // Test that the isOriginalActionKeyPressed flag is set to false on releasing the action key
@@ -2069,7 +2069,7 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs1);
 
             // IsOriginalActionKeyPressed state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = actionKey, .dwFlags = KEYEVENTF_KEYUP } },
@@ -2113,7 +2113,7 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs2);
 
             // IsOriginalActionKeyPressed state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
         }
 
         // Test that the isOriginalActionKeyPressed flag is set to false on releasing the modifier key
@@ -2136,7 +2136,7 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs1);
 
             // IsOriginalActionKeyPressed state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL, .dwFlags = KEYEVENTF_KEYUP } },
@@ -2169,7 +2169,7 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs1);
 
             // IsOriginalActionKeyPressed state should be true
-            Assert::AreEqual(true, testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
+            Assert::IsTrue(testState.osLevelShortcutReMap[src].isOriginalActionKeyPressed);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'B' } },
@@ -2258,7 +2258,7 @@ namespace RemappingLogicTests
             // SendVirtualInput should be called exactly twice with the above condition (since two dummy key events are sent in one set)
             Assert::AreEqual(2, mockedInputHandler.GetSendVirtualInputCallCount());
             // LWin should be pressed
-            Assert::AreEqual(true, mockedInputHandler.GetVirtualKeyState(VK_LWIN));
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(VK_LWIN));
         }
 
         // Test if one set of dummy key events is sent before releasing the modifier when shortcut is remapped to a single key on invoking the shortcut. Example: Win+A->V, press Win+A, since Win will be released here we need to send a dummy event before it
@@ -2329,7 +2329,7 @@ namespace RemappingLogicTests
             // SendVirtualInput should be called exactly twice with the above condition (since two dummy key events are sent in one set)
             Assert::AreEqual(2, mockedInputHandler.GetSendVirtualInputCallCount());
             // LWin should be pressed
-            Assert::AreEqual(true, mockedInputHandler.GetVirtualKeyState(VK_LWIN));
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(VK_LWIN));
         }
 
         // Test if one set of dummy key events is sent after setting the modifier when shortcut is remapped to a single key on invoking shortcut after pressing another key and then releasing the action key. Example: Win+A->V, press Shift+Win+A and release A, since Win will be pressed here we need to send a dummy event after it
@@ -2368,7 +2368,7 @@ namespace RemappingLogicTests
             // SendVirtualInput should be called exactly twice with the above condition (since two dummy key events are sent in one set)
             Assert::AreEqual(2, mockedInputHandler.GetSendVirtualInputCallCount());
             // LWin should be pressed
-            Assert::AreEqual(true, mockedInputHandler.GetVirtualKeyState(VK_LWIN));
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(VK_LWIN));
         }
     };
 }
