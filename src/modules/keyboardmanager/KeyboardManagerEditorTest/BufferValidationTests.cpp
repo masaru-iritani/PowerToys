@@ -228,55 +228,55 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when making null-selection (VK_INVALID index) on first column of empty shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 2: Validate the element when making null-selection (VK_INVALID index) on second column of empty shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 3: Validate the element when making null-selection (VK_INVALID index) on first column of empty shortcut to key row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_INVALID }, L"", false, { { Shortcut(), VK_NULL }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_INVALID }, L"", false, { { Shortcut(), VK_NULL }, L"" } });
                 // Case 4: Validate the element when making null-selection (VK_INVALID index) on second column of empty shortcut to key row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_INVALID }, L"", true, { { Shortcut(), VK_NULL }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_INVALID }, L"", true, { { Shortcut(), VK_NULL }, L"" } });
                 // Case 5: Validate the element when making null-selection (VK_INVALID index) on first dropdown of first column of valid shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>({ VK_INVALID, 'C' }), L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 6: Validate the element when making null-selection (VK_INVALID index) on first dropdown of second column of valid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>({ VK_INVALID, 'A' }), L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_INVALID, 'A' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 7: Validate the element when making null-selection (VK_INVALID index) on first dropdown of second column of valid hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>({ VK_INVALID, 'A' }), L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_INVALID, 'A' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 8: Validate the element when making null-selection (VK_INVALID index) on second dropdown of first column of valid shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>({ VK_CONTROL, VK_INVALID }), L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 9: Validate the element when making null-selection (VK_INVALID index) on second dropdown of second column of valid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>({ VK_CONTROL, VK_INVALID }), L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 10: Validate the element when making null-selection (VK_INVALID index) on second dropdown of second column of valid hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>({ VK_CONTROL, VK_INVALID }), L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_INVALID }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 11: Validate the element when making null-selection (VK_INVALID index) on first dropdown of first column of valid 3 key shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>({ VK_INVALID, VK_SHIFT, 'D' }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_INVALID, VK_SHIFT, 'D' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 12: Validate the element when making null-selection (VK_INVALID index) on first dropdown of second column of valid 3 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>({ VK_INVALID, VK_SHIFT, 'B' }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_INVALID, VK_SHIFT, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 13: Validate the element when making null-selection (VK_INVALID index) on first dropdown of second column of valid hybrid 3 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>({ VK_INVALID, VK_SHIFT, 'B' }), L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_INVALID, VK_SHIFT, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 14: Validate the element when making null-selection (VK_INVALID index) on second dropdown of first column of valid 3 key shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>({ VK_CONTROL, VK_INVALID, 'D' }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_INVALID, 'D' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 15: Validate the element when making null-selection (VK_INVALID index) on second dropdown of second column of valid 3 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>({ VK_CONTROL, VK_INVALID, 'B' }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_INVALID, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 16: Validate the element when making null-selection (VK_INVALID index) on second dropdown of second column of valid hybrid 3 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>({ VK_CONTROL, VK_INVALID, 'B' }), L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_INVALID, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 17: Validate the element when making null-selection (VK_INVALID index) on third dropdown of first column of valid 3 key shortcut to shortcut row
-                testCases.push_back({ 0, 0, 2, std::vector<int32_t>({ VK_CONTROL, VK_SHIFT, VK_INVALID }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 2, { VK_CONTROL, VK_SHIFT, VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 18: Validate the element when making null-selection (VK_INVALID index) on third dropdown of second column of valid 3 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>({ VK_CONTROL, VK_SHIFT, VK_INVALID }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_SHIFT, VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 19: Validate the element when making null-selection (VK_INVALID index) on third dropdown of second column of valid hybrid 3 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>({ VK_CONTROL, VK_SHIFT, VK_INVALID }), L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_SHIFT, VK_INVALID }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 20: Validate the element when making null-selection (VK_INVALID index) on fourth dropdown of first column of valid 4 key shortcut to shortcut row
-                testCases.push_back({ 0, 0, 3, std::vector<int32_t>({ VK_CONTROL, VK_SHIFT, VK_MENU, VK_INVALID }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 3, { VK_CONTROL, VK_SHIFT, VK_MENU, VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'B' } }, L"" } });
                 // Case 21: Validate the element when making null-selection (VK_INVALID index) on fourth dropdown of second column of valid 4 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 3, std::vector<int32_t>({ VK_CONTROL, VK_SHIFT, VK_MENU, VK_INVALID }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 3, { VK_CONTROL, VK_SHIFT, VK_MENU, VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'B' } }, L"" } });
                 // Case 22: Validate the element when making null-selection (VK_INVALID index) on fourth dropdown of second column of valid hybrid 4 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 3, std::vector<int32_t>({ VK_CONTROL, VK_SHIFT, VK_MENU, VK_INVALID }), L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 3, { VK_CONTROL, VK_SHIFT, VK_MENU, VK_INVALID }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, 'B' } }, L"" } });
                 // Case 23: Validate the element when making null-selection (VK_INVALID index) on fifth dropdown of first column of valid 5 key shortcut to shortcut row
-                testCases.push_back({ 0, 0, 3, std::vector<int32_t>({ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, VK_INVALID }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 3, { VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'B' } }, L"" } });
                 // Case 24: Validate the element when making null-selection (VK_INVALID index) on fifth dropdown of second column of valid 5 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 3, std::vector<int32_t>({ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, VK_INVALID }), L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 3, { VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'B' } }, L"" } });
                 // Case 25: Validate the element when making null-selection (VK_INVALID index) on fifth dropdown of second column of valid hybrid 5 key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 3, std::vector<int32_t>({ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, VK_INVALID }), L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 3, { VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, VK_INVALID }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'D' }, Shortcut{ VK_CONTROL, VK_SHIFT, VK_MENU, VK_LWIN, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -297,13 +297,13 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting A ('A') on first dropdown of first column of empty shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ 'A' }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 0, { 'A' }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting A ('A') on first dropdown of second column of empty shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ 'A' }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { 'A' }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 3: Validate the element when selecting A ('A') on first dropdown of first column of empty shortcut to key row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ 'A' }, L"", false, { { Shortcut(), VK_NULL }, L"" } });
+                testCases.push_back({ 0, 0, 0, { 'A' }, L"", false, { { Shortcut(), VK_NULL }, L"" } });
                 // Case 4: Validate the element when selecting A ('A') on first dropdown of first column of valid shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ 'A', 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { 'A', 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -324,9 +324,9 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting A ('A') on first dropdown of second column of empty shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ 'A' }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { 'A' }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting A ('A') on first dropdown of second column of empty shortcut to key row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ 'A' }, L"", true, { { Shortcut(), VK_NULL }, L"" } });
+                testCases.push_back({ 0, 1, 0, { 'A' }, L"", true, { { Shortcut(), VK_NULL }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -349,9 +349,9 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting A ('A') on first dropdown of second column of hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ 'A', 'C' }, L"", true, { { Shortcut(), Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { 'A', 'C' }, L"", true, { { Shortcut(), Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 2: Validate the element when selecting A ('A') on second dropdown of second column of hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'A', 'B' }, L"", true, { { Shortcut(), Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'A', 'B' }, L"", true, { { Shortcut(), Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -374,9 +374,9 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting A ('A') on second dropdown of first column of shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'A', 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, 'A', 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 2: Validate the element when selecting A  ('A')on second dropdown of second column of shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'A', 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'A', 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -397,17 +397,17 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting A ('A') on last dropdown of first column of three key shortcut to shortcut row
-                testCases.push_back({ 0, 0, 2, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'A' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 2, { VK_CONTROL, VK_SHIFT, 'A' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 2: Validate the element when selecting A ('A') on last dropdown of second column of three key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'A' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_SHIFT, 'A' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 3: Validate the element when selecting A ('A') on last dropdown of hybrid second column of three key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'A' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_SHIFT, 'A' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting A ('A') on last dropdown of first column of two key shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'A' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, 'A' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 5: Validate the element when selecting A ('A') on last dropdown of second column of two key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'A' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'A' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 6: Validate the element when selecting A ('A') on last dropdown of hybrid second column of two key shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'A' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'A' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -428,17 +428,17 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting A ('A') on second dropdown of first column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'A', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, 'A', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 2: Validate the element when selecting A ('A') on second dropdown of second column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'A', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'A', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 3: Validate the element when selecting A ('A') on second dropdown of second column of 3 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'A', VK_INVALID }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'A', VK_INVALID }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting A ('A') on second dropdown of first column of empty 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_INVALID, 'A', VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_INVALID, 'A', VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 5: Validate the element when selecting A ('A') on second dropdown of second column of empty 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, 'A', VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, 'A', VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 6: Validate the element when selecting A ('A') on second dropdown of second column of empty 3 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, 'A', VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, 'A', VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -459,7 +459,7 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting A ('A') on first dropdown of second column of empty 3 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ 'A', VK_INVALID, VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { 'A', VK_INVALID, VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -480,19 +480,19 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting Shift (VK_SHIFT) on second dropdown of first column of 2 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 2: Validate the element when selecting Shift (VK_SHIFT) on second dropdown of second column of 2 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 3: Validate the element when selecting Shift (VK_SHIFT) on second dropdown of second column of 2 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_SHIFT }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of first column of 1 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_SHIFT }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_SHIFT }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 5: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of second column of 1 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_SHIFT }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_SHIFT }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 6: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of second column of 1 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_SHIFT }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_SHIFT }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 7: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of second column of 1 dropdown hybrid shortcut to key row with an action key selected
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_SHIFT }, L"", true, { { Shortcut(), 'D' }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_SHIFT }, L"", true, { { Shortcut(), 'D' }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -513,11 +513,11 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting LCtrl (VK_LCONTROL) on second dropdown of first column of 2 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_LCONTROL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_LCONTROL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 2: Validate the element when selecting LCtrl (VK_LCONTROL) on second dropdown of second column of 2 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_LCONTROL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_LCONTROL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 3: Validate the element when selecting LCtrl (VK_LCONTROL) on second dropdown of second column of 2 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_LCONTROL }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_LCONTROL }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -538,23 +538,23 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting Shift (VK_SHIFT) on last dropdown of first column of 5 dropdown shortcut to shortcut row with middle empty
-                testCases.push_back({ 0, 0, 4, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 4, { VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 2: Validate the element when selecting Shift (VK_SHIFT) on last dropdown of second column of 5 dropdown shortcut to shortcut row with middle empty
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 3: Validate the element when selecting Shift (VK_SHIFT) on last dropdown of second column of 5 dropdown hybrid shortcut to shortcut row with middle empty
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting Shift (VK_SHIFT) on last dropdown of first column of 5 dropdown shortcut to shortcut row with first four empty
-                testCases.push_back({ 0, 0, 4, std::vector<int32_t>{ VK_INVALID, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 4, { VK_INVALID, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 5: Validate the element when selecting Shift (VK_SHIFT) on last dropdown of second column of 5 dropdown shortcut to shortcut row with first four empty
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_INVALID, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_INVALID, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 6: Validate the element when selecting Shift (VK_SHIFT) on last dropdown of second column of 5 dropdown hybrid shortcut to shortcut row with first four empty
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_INVALID, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_INVALID, VK_INVALID, VK_INVALID, VK_INVALID, VK_SHIFT }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 7: Validate the element when selecting Shift (VK_SHIFT) on last dropdown of first column of 5 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 4, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 4, { VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'B' } }, L"" } });
                 // Case 8: Validate the element when selecting Shift (VK_SHIFT) on last dropdown of second column of 5 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'B' } }, L"" } });
                 // Case 9: Validate the element when selecting Shift (VK_SHIFT) on last dropdown of second column of 5 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, VK_SHIFT }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, VK_SHIFT }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_RWIN, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -575,17 +575,17 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting Ctrl (VK_CONTROL) on last dropdown of first column of 5 dropdown shortcut to shortcut row with middle empty
-                testCases.push_back({ 0, 0, 4, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_CONTROL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 4, { VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_CONTROL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 2: Validate the element when selecting Ctrl (VK_CONTROL) on last dropdown of second column of 5 dropdown shortcut to shortcut row with middle empty
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_CONTROL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_CONTROL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 3: Validate the element when selecting Ctrl (VK_CONTROL) on last dropdown of second column of 5 dropdown hybrid shortcut to shortcut row with middle empty
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_CONTROL }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_CONTROL, VK_INVALID, VK_INVALID, VK_INVALID, VK_CONTROL }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting Ctrl (VK_CONTROL) on last dropdown of first column of 5 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 4, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, VK_CONTROL }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 4, { VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, VK_CONTROL }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'B' } }, L"" } });
                 // Case 5: Validate the element when selecting Ctrl (VK_CONTROL) on last dropdown of second column of 5 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, VK_CONTROL }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, VK_CONTROL }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'B' } }, L"" } });
                 // Case 6: Validate the element when selecting Ctrl (VK_CONTROL) on last dropdown of second column of 5 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 4, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, VK_CONTROL }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 4, { VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, VK_CONTROL }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, VK_LWIN, VK_SHIFT, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -606,23 +606,23 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of first column of 2 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_CONTROL, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 2: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of second column of 2 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_CONTROL, VK_SHIFT }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 3: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of second column of 2 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_CONTROL, VK_SHIFT }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of first column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_SHIFT, VK_MENU, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_SHIFT, VK_MENU, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 5: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of second column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_SHIFT, VK_MENU, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_SHIFT, VK_MENU, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 6: Validate the element when selecting Shift (VK_SHIFT) on first dropdown of second column of 3 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_SHIFT, VK_MENU, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_SHIFT, VK_MENU, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 7: Validate the element when selecting Shift (VK_SHIFT) on second dropdown of first column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 8: Validate the element when selecting Shift (VK_SHIFT) on second dropdown of second column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_SHIFT, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 9: Validate the element when selecting Shift (VK_SHIFT) on second dropdown of second column of 3 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_SHIFT, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -643,23 +643,23 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of first column of 3 dropdown shortcut to shortcut row with first empty
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_CONTROL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_CONTROL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 2: Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of second column of 3 dropdown shortcut to shortcut row with first empty
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_CONTROL, VK_CONTROL, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_CONTROL, VK_CONTROL, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 3: Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of second column of 3 dropdown hybrid shortcut to shortcut row with first empty
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_CONTROL, VK_CONTROL, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_CONTROL, VK_CONTROL, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting Alt (VK_MENU) on first dropdown of first column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_MENU, VK_MENU, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_MENU, VK_MENU, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 5: Validate the element when selecting Alt (VK_MENU) on first dropdown of second column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_MENU, VK_MENU, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_MENU, VK_MENU, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 6: Validate the element when selecting Alt (VK_MENU) on first dropdown of second column of 3 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_MENU, VK_MENU, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_MENU, VK_MENU, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 7: Validate the element when selecting Ctrl (VK_CONTROL) on second dropdown of first column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 8: Validate the element when selecting Ctrl (VK_CONTROL) on second dropdown of second column of 3 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_CONTROL, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_CONTROL, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 9: Validate the element when selecting Ctrl (VK_CONTROL) on second dropdown of second column of 3 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_CONTROL, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_CONTROL, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -680,9 +680,9 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting None (VK_NULL) on first dropdown of first column of 1 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 1 dropdown shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -703,7 +703,7 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting None (VK_NULL) on first dropdown of first column of 1 dropdown hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -724,13 +724,13 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting None (VK_NULL) on first dropdown of first column of 2 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_NULL, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_NULL, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 2 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 3: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 2 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 2 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -751,13 +751,13 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting None (VK_NULL) on second dropdown of first column of 2 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_INVALID, VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_INVALID, VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting None (VK_NULL) on second dropdown of second column of 2 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 3: Validate the element when selecting None (VK_NULL) on second dropdown of second column of 2 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_NULL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting None (VK_NULL) on second dropdown of second column of 2 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_NULL }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -778,13 +778,13 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 2 dropdown empty hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting None (VK_NULL) on second dropdown of second column of 2 dropdown empty hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, VK_NULL }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, VK_NULL }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 3: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 2 dropdown valid hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, VK_CONTROL }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, VK_CONTROL }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
                 // Case 4: Validate the element when selecting None (VK_NULL) on second dropdown of second column of 2 dropdown valid hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_NULL }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -805,29 +805,29 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting None (VK_NULL) on first dropdown of first column of 3 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_NULL, VK_INVALID, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_NULL, VK_INVALID, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, VK_INVALID, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, VK_INVALID, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 3: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown empty hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, VK_INVALID, VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, VK_INVALID, VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 4: Validate the element when selecting None (VK_NULL) on second dropdown of first column of 3 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_INVALID, 0, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_INVALID, 0, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 5: Validate the element when selecting None (VK_NULL) on second dropdown of second column of 3 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, 0, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, 0, VK_INVALID }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 6: Validate the element when selecting None (VK_NULL) on second dropdown of second column of 3 dropdown empty hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, 0, VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, 0, VK_INVALID }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 7: Validate the element when selecting None (VK_NULL) on first dropdown of first column of 3 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_NULL, VK_MENU, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_NULL, VK_MENU, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 8: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, VK_MENU, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, VK_MENU, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 9: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown valid hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, VK_MENU, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, VK_MENU, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 10: Validate the element when selecting None (VK_NULL) on first dropdown of first column of 3 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 11: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_NULL, 'B' }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 12: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown valid hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_NULL, 'B' }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -848,17 +848,17 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting None (VK_NULL) on first dropdown of first column of 3 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 0, 2, std::vector<int32_t>{ VK_INVALID, VK_INVALID, VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 2, { VK_INVALID, VK_INVALID, VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown empty shortcut to shortcut row
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_INVALID, VK_INVALID, VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_INVALID, VK_INVALID, VK_NULL }, L"", false, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 3: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown empty hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_INVALID, VK_INVALID, VK_NULL }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_INVALID, VK_INVALID, VK_NULL }, L"", true, { { Shortcut(), Shortcut() }, L"" } });
                 // Case 4: Validate the element when selecting None (VK_NULL) on first dropdown of first column of 3 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 0, 2, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_NULL }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 0, 2, { VK_CONTROL, VK_MENU, VK_NULL }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 5: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown valid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_NULL }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_MENU, VK_NULL }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
                 // Case 6: Validate the element when selecting None (VK_NULL) on first dropdown of second column of 3 dropdown valid hybrid shortcut to shortcut row
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_NULL }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_MENU, VK_NULL }, L"", true, { { Shortcut{ VK_CONTROL, VK_MENU, 'C' }, Shortcut{ VK_CONTROL, VK_MENU, 'B' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -879,23 +879,23 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting L ('L') on second dropdown of first column of LWin+Empty shortcut
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_LWIN, 'L' }, L"", false, { { Shortcut{ VK_LWIN }, Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_LWIN, 'L' }, L"", false, { { Shortcut{ VK_LWIN }, Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting L ('L') on second dropdown of second column of LWin+Empty shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_LWIN, 'L' }, L"", false, { { Shortcut(), Shortcut{ VK_LWIN } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_LWIN, 'L' }, L"", false, { { Shortcut(), Shortcut{ VK_LWIN } }, L"" } });
                 // Case 3: Validate the element when selecting L ('L') on second dropdown of second column of hybrid LWin+Empty shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_LWIN, 'L' }, L"", true, { { Shortcut(), Shortcut{ VK_LWIN } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_LWIN, 'L' }, L"", true, { { Shortcut(), Shortcut{ VK_LWIN } }, L"" } });
                 // Case 4: Validate the element when selecting L ('L') on second dropdown of first column of Win+Empty shortcut
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ CommonSharedConstants::VK_WIN_BOTH, 'L' }, L"", false, { { Shortcut{ CommonSharedConstants::VK_WIN_BOTH }, Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 1, { CommonSharedConstants::VK_WIN_BOTH, 'L' }, L"", false, { { Shortcut{ CommonSharedConstants::VK_WIN_BOTH }, Shortcut() }, L"" } });
                 // Case 5: Validate the element when selecting L ('L') on second dropdown of second column of Win+Empty shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ CommonSharedConstants::VK_WIN_BOTH, 'L' }, L"", false, { { Shortcut(), Shortcut{ CommonSharedConstants::VK_WIN_BOTH } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { CommonSharedConstants::VK_WIN_BOTH, 'L' }, L"", false, { { Shortcut(), Shortcut{ CommonSharedConstants::VK_WIN_BOTH } }, L"" } });
                 // Case 6: Validate the element when selecting L ('L') on second dropdown of second column of hybrid Win+Empty shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ CommonSharedConstants::VK_WIN_BOTH, 'L' }, L"", true, { { Shortcut(), Shortcut{ CommonSharedConstants::VK_WIN_BOTH } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { CommonSharedConstants::VK_WIN_BOTH, 'L' }, L"", true, { { Shortcut(), Shortcut{ CommonSharedConstants::VK_WIN_BOTH } }, L"" } });
                 // Case 7: Validate the element when selecting LWin (VK_LWIN) on first dropdown of first column of Empty+L shortcut
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_LWIN, 'L' }, L"", false, { { Shortcut{ 'L' }, Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_LWIN, 'L' }, L"", false, { { Shortcut{ 'L' }, Shortcut() }, L"" } });
                 // Case 8: Validate the element when selecting LWin (VK_LWIN) on first dropdown of second column of Empty+L shortcut
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_LWIN, 'L' }, L"", false, { { Shortcut(), Shortcut{ 'L' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_LWIN, 'L' }, L"", false, { { Shortcut(), Shortcut{ 'L' } }, L"" } });
                 // Case 9: Validate the element when selecting LWin (VK_LWIN) on first dropdown of second column of hybrid Empty+L shortcut
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_LWIN, 'L' }, L"", true, { { Shortcut(), Shortcut{ 'L' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_LWIN, 'L' }, L"", true, { { Shortcut(), Shortcut{ 'L' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -915,17 +915,17 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting Null (VK_INVALID) on second dropdown of first column of LWin + Ctrl + L shortcut
-                testCases.push_back({ 0, 0, 2, std::vector<int32_t>{ VK_LWIN, VK_INVALID, 'L' }, L"", false, { { Shortcut{ VK_LWIN, VK_CONTROL, 'L' }, Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 2, { VK_LWIN, VK_INVALID, 'L' }, L"", false, { { Shortcut{ VK_LWIN, VK_CONTROL, 'L' }, Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting Null (VK_INVALID) on second dropdown of second column of LWin + Ctrl + L shortcut
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_LWIN, VK_INVALID, 'L' }, L"", false, { { Shortcut(), Shortcut{ VK_LWIN, VK_CONTROL, 'L' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_LWIN, VK_INVALID, 'L' }, L"", false, { { Shortcut(), Shortcut{ VK_LWIN, VK_CONTROL, 'L' } }, L"" } });
                 // Case 3: Validate the element when selecting Null (VK_INVALID) on second dropdown of second column of hybrid LWin + Ctrl + L shortcut
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_LWIN, VK_INVALID, 'L' }, L"", true, { { Shortcut(), Shortcut{ VK_LWIN, VK_CONTROL, 'L' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_LWIN, VK_INVALID, 'L' }, L"", true, { { Shortcut(), Shortcut{ VK_LWIN, VK_CONTROL, 'L' } }, L"" } });
                 // Case 4: Validate the element when selecting None (VK_NULL) on second dropdown of first column of LWin + Ctrl + L shortcut
-                testCases.push_back({ 0, 0, 2, std::vector<int32_t>{ VK_LWIN, VK_NULL, 'L' }, L"", false, { { Shortcut{ VK_LWIN, VK_CONTROL, 'L' }, Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 2, { VK_LWIN, VK_NULL, 'L' }, L"", false, { { Shortcut{ VK_LWIN, VK_CONTROL, 'L' }, Shortcut() }, L"" } });
                 // Case 5: Validate the element when selecting None (VK_NULL) on second dropdown of second column of LWin + Ctrl + L shortcut
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_LWIN, VK_NULL, 'L' }, L"", false, { { Shortcut(), Shortcut{ VK_LWIN, VK_CONTROL, 'L' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_LWIN, VK_NULL, 'L' }, L"", false, { { Shortcut(), Shortcut{ VK_LWIN, VK_CONTROL, 'L' } }, L"" } });
                 // Case 6: Validate the element when selecting None (VK_NULL) on second dropdown of second column of hybrid LWin + Ctrl + L shortcut
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_LWIN, VK_NULL, 'L' }, L"", true, { { Shortcut(), Shortcut{ VK_LWIN, VK_CONTROL, 'L' } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_LWIN, VK_NULL, 'L' }, L"", true, { { Shortcut(), Shortcut{ VK_LWIN, VK_CONTROL, 'L' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -945,17 +945,17 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting Del (VK_DELETE) on third dropdown of first column of Ctrl+Alt+Empty shortcut
-                testCases.push_back({ 0, 0, 2, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_DELETE }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU }, Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 2, { VK_CONTROL, VK_MENU, VK_DELETE }, L"", false, { { Shortcut{ VK_CONTROL, VK_MENU }, Shortcut() }, L"" } });
                 // Case 2: Validate the element when selecting Del (VK_DELETE) on third dropdown of second column of Ctrl+Alt+Empty shortcut
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_DELETE }, L"", false, { { Shortcut(), Shortcut{ VK_CONTROL, VK_MENU } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_MENU, VK_DELETE }, L"", false, { { Shortcut(), Shortcut{ VK_CONTROL, VK_MENU } }, L"" } });
                 // Case 3: Validate the element when selecting Del (VK_DELETE) on third dropdown of second column of hybrid Ctrl+Alt+Empty shortcut
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_DELETE }, L"", true, { { Shortcut(), Shortcut{ VK_CONTROL, VK_MENU } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_MENU, VK_DELETE }, L"", true, { { Shortcut(), Shortcut{ VK_CONTROL, VK_MENU } }, L"" } });
                 // Case 4: Validate the element when selecting Alt (VK_MENU) on second dropdown of first column of Ctrl+Empty+Del shortcut
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_DELETE }, L"", false, { { Shortcut{ VK_CONTROL, VK_DELETE }, Shortcut() }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_MENU, VK_DELETE }, L"", false, { { Shortcut{ VK_CONTROL, VK_DELETE }, Shortcut() }, L"" } });
                 // Case 5: Validate the element when selecting Alt (VK_MENU) on second dropdown of second column of Ctrl+Empty+Del shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_DELETE }, L"", false, { { Shortcut(), Shortcut{ VK_CONTROL, VK_DELETE } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_MENU, VK_DELETE }, L"", false, { { Shortcut(), Shortcut{ VK_CONTROL, VK_DELETE } }, L"" } });
                 // Case 6: Validate the element when selecting Alt (VK_MENU) on second dropdown of second column of hybrid Ctrl+Empty+Del shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_MENU, VK_DELETE }, L"", true, { { Shortcut(), Shortcut{ VK_CONTROL, VK_DELETE } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_MENU, VK_DELETE }, L"", true, { { Shortcut(), Shortcut{ VK_CONTROL, VK_DELETE } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -975,21 +975,21 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1: Validate the element when selecting A ('A') on first dropdown of empty hybrid second column
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ 'A', VK_INVALID, VK_INVALID }, L"", true, { { 'A', VK_NULL }, L"" } });
+                testCases.push_back({ 0, 1, 0, { 'A', VK_INVALID, VK_INVALID }, L"", true, { { 'A', VK_NULL }, L"" } });
                 // Case 2: Validate the element when selecting A ('A') on second dropdown of empty hybrid second column
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, 'A', VK_INVALID }, L"", true, { { 'A', VK_NULL }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, 'A', VK_INVALID }, L"", true, { { 'A', VK_NULL }, L"" } });
                 // Case 3: Validate the element when selecting A ('A') on third dropdown of empty hybrid second column
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_INVALID, VK_INVALID, 'A' }, L"", true, { { 'A', VK_NULL }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_INVALID, VK_INVALID, 'A' }, L"", true, { { 'A', VK_NULL }, L"" } });
                 // Case 4: Validate the element when selecting A ('A') on first dropdown of hybrid second column with key
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ 'A' }, L"", true, { { 'A', 'C' }, L"" } });
+                testCases.push_back({ 0, 1, 0, { 'A' }, L"", true, { { 'A', 'C' }, L"" } });
                 // Case 5: Validate the element when selecting Null (VK_INVALID) on first dropdown of hybrid second column with shortcut
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_INVALID, 'A' }, L"", true, { { 'A', Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_INVALID, 'A' }, L"", true, { { 'A', Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 6: Validate the element when selecting None (VK_NULL) on first dropdown of hybrid second column with shortcut
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, 'A' }, L"", true, { { 'A', Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, 'A' }, L"", true, { { 'A', Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 7: Validate the element when selecting Null (VK_INVALID) on second dropdown of hybrid second column with shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, VK_CONTROL }, L"", true, { { VK_CONTROL, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, VK_CONTROL }, L"", true, { { VK_CONTROL, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 8: Validate the element when selecting None (VK_NULL) on second dropdown of hybrid second column with shortcut
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_NULL, VK_CONTROL }, L"", true, { { VK_CONTROL, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_NULL, VK_CONTROL }, L"", true, { { VK_CONTROL, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1009,23 +1009,23 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on third dropdown of first column with Ctrl+Shift+Empty
-                testCases.push_back({ 0, 0, 2, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 2, { VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
                 // Case 2 : Validate the element when selecting C ('C') on third dropdown of second column with Ctrl+Shift+Empty
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT } }, L"" } });
                 // Case 3 : Validate the element when selecting C ('C') on third dropdown of second column with hybrid Ctrl+Shift+Empty
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_SHIFT, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT } }, L"" } });
                 // Case 4 : Validate the element when selecting Shift (VK_SHIFT) on second dropdown of first column with Ctrl+Empty+C
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
                 // Case 5 : Validate the element when selecting Shift (VK_SHIFT) on second dropdown of second column with Ctrl+Empty+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 6 : Validate the element when selecting Shift (VK_SHIFT) on second dropdown of second column with hybrid Ctrl+Empty+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_SHIFT, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 7 : Validate the element when selecting Shift (VK_SHIFT) on first dropdown of first column with Empty+Ctrl+C
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_SHIFT, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_SHIFT, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
                 // Case 8 : Validate the element when selecting Shift (VK_SHIFT) on first dropdown of second column with Empty+Ctrl+C
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_SHIFT, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_SHIFT, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 9 : Validate the element when selecting Shift (VK_SHIFT) on first dropdown of second column with hybrid Empty+Ctrl+C
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_SHIFT, VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_SHIFT, VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1045,65 +1045,65 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on third dropdown of first column with Ctrl+Empty+Empty
-                testCases.push_back({ 0, 0, 2, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 2, { VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 2 : Validate the element when selecting C ('C') on third dropdown of second column with Ctrl+Empty+Empty
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL } }, L"" } });
                 // Case 3 : Validate the element when selecting C ('C') on third dropdown of second column with hybrid Ctrl+Empty+Empty
-                testCases.push_back({ 0, 1, 2, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL } }, L"" } });
+                testCases.push_back({ 0, 1, 2, { VK_CONTROL, VK_INVALID, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL } }, L"" } });
                 // Case 4 : Validate the element when selecting C ('C') on second dropdown of first column with Ctrl+Empty+Empty
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'C', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, 'C', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 5 : Validate the element when selecting C ('C') on second dropdown of second column with Ctrl+Empty+Empty
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'C', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'C', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL } }, L"" } });
                 // Case 6 : Validate the element when selecting C ('C') on second dropdown of second column with hybrid Ctrl+Empty+Empty
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'C', VK_INVALID }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'C', VK_INVALID }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL } }, L"" } });
                 // Case 7 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of first column with Empty+Empty+C
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 8 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of second column with Empty+Empty+C
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ 'C' } }, L"" } });
                 // Case 9 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of second column with hybrid Empty+Empty+C
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_CONTROL, VK_INVALID, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ 'C' } }, L"" } });
                 // Case 10 : Validate the element when selecting Ctrl (VK_CONTROL) on second dropdown of first column with Empty+Empty+C
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 11 : Validate the element when selecting Ctrl (VK_CONTROL) on second dropdown of second column with Empty+Empty+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ 'C' } }, L"" } });
                 // Case 12 : Validate the element when selecting Ctrl (VK_CONTROL) on second dropdown of second column with hybrid Empty+Empty+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_INVALID, VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ 'C' } }, L"" } });
                 // Case 13 : Validate the element when selecting C ('C') on second dropdown of first column with Ctrl+A
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'A' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'A' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 14 : Validate the element when selecting C ('C') on second dropdown of second column with Ctrl+A
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 15 : Validate the element when selecting C ('C') on second dropdown of second column with hybrid Ctrl+A
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'A' } }, L"" } });
                 // Case 16 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of first column with Alt+C
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_MENU, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_MENU, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 17 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of second column with Alt+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_MENU, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_MENU, 'C' } }, L"" } });
                 // Case 18 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of second column with hybrid Alt+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_MENU, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_MENU, 'C' } }, L"" } });
                 // Case 19 : Validate the element when selecting Null (VK_INVALID)  on second dropdown of first column with Ctrl+Shift+C
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 20 : Validate the element when selecting Null (VK_INVALID)  on second dropdown of second column with Ctrl+Shift+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
                 // Case 21 : Validate the element when selecting Null (VK_INVALID)  on second dropdown of second column with hybrid Ctrl+Shift+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_INVALID, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
                 // Case 22 : Validate the element when selecting None (VK_NULL) on second dropdown of first column with Ctrl+Shift+C
-                testCases.push_back({ 0, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 1, { VK_CONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 23 : Validate the element when selecting None (VK_NULL)  on second dropdown of second column with Ctrl+Shift+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
                 // Case 24 : Validate the element when selecting None (VK_NULL)  on second dropdown of second column with hybrid Ctrl+Shift+C
-                testCases.push_back({ 0, 1, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 1, { VK_CONTROL, VK_NULL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, VK_SHIFT, 'C' } }, L"" } });
                 // Case 25 : Validate the element when selecting Null (VK_INVALID)  on first dropdown of first column with Shift+Ctrl+C
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 26 : Validate the element when selecting Null (VK_INVALID)  on first dropdown of second column with Shift+Ctrl+C
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_SHIFT, VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_SHIFT, VK_CONTROL, 'C' } }, L"" } });
                 // Case 27 : Validate the element when selecting Null (VK_INVALID)  on first dropdown of second column with hybrid Shift+Ctrl+C
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_SHIFT, VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_INVALID, VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_SHIFT, VK_CONTROL, 'C' } }, L"" } });
                 // Case 28 : Validate the element when selecting None (VK_NULL) on first dropdown of first column with Shift+Ctrl+C
-                testCases.push_back({ 0, 0, 0, std::vector<int32_t>{ VK_NULL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 0, 0, { VK_NULL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut{ VK_CONTROL, 'C' } }, L"" } });
                 // Case 29 : Validate the element when selecting None (VK_NULL) on first dropdown of second column with Shift+Ctrl+C
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_SHIFT, VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_SHIFT, VK_CONTROL, 'C' } }, L"" } });
                 // Case 30 : Validate the element when selecting None (VK_NULL) on first dropdown of second column with hybrid Shift+Ctrl+C
-                testCases.push_back({ 0, 1, 0, std::vector<int32_t>{ VK_NULL, VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_SHIFT, VK_CONTROL, 'C' } }, L"" } });
+                testCases.push_back({ 0, 1, 0, { VK_NULL, VK_CONTROL, 'C' }, L"", true, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut{ VK_SHIFT, VK_CONTROL, 'C' } }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1123,11 +1123,11 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on third dropdown of first column with Ctrl+Shift+Empty
-                testCases.push_back({ 1, 0, 2, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 2, { VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT }, Shortcut() }, L"" } });
                 // Case 2 : Validate the element when selecting Shift (VK_SHIFT) on second dropdown of first column with Ctrl+Empty+C
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, L"" } });
                 // Case 3 : Validate the element when selecting Shift (VK_SHIFT) on first dropdown of first column with Empty+Ctrl+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_SHIFT, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_SHIFT, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1149,11 +1149,11 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on third dropdown of first column with Ctrl+Shift+Empty for testApp2
-                testCases.push_back({ 1, 0, 2, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, VK_SHIFT }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 2, { VK_CONTROL, VK_SHIFT, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, VK_SHIFT }, Shortcut() }, testApp2 } });
                 // Case 2 : Validate the element when selecting Shift (VK_SHIFT) on second dropdown of first column with Ctrl+Empty+C for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_SHIFT, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, VK_SHIFT, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
                 // Case 3 : Validate the element when selecting Shift (VK_SHIFT) on first dropdown of first column with Empty+Ctrl+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_SHIFT, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_SHIFT, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1175,11 +1175,11 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on third dropdown of first column with LCtrl+Shift+Empty
-                testCases.push_back({ 1, 0, 2, std::vector<int32_t>{ VK_LCONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL, VK_SHIFT }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 2, { VK_LCONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL, VK_SHIFT }, Shortcut() }, L"" } });
                 // Case 2 : Validate the element when selecting Shift (VK_SHIFT) on second dropdown of first column with LCtrl+Empty+C
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, VK_SHIFT, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL, 'C' }, Shortcut() }, L"" } });
                 // Case 3 : Validate the element when selecting LShift (VK_LSHIFT) on first dropdown of first column with Empty+Ctrl+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_LSHIFT, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_LSHIFT, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1201,11 +1201,11 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on third dropdown of first column with LCtrl+Shift+Empty for testApp2
-                testCases.push_back({ 1, 0, 2, std::vector<int32_t>{ VK_LCONTROL, VK_SHIFT, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL, VK_SHIFT }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 2, { VK_LCONTROL, VK_SHIFT, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL, VK_SHIFT }, Shortcut() }, testApp2 } });
                 // Case 2 : Validate the element when selecting Shift (VK_SHIFT) on second dropdown of first column with LCtrl+Empty+C for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, VK_SHIFT, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, VK_SHIFT, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL, 'C' }, Shortcut() }, testApp2 } });
                 // Case 3 : Validate the element when selecting LShift (VK_LSHIFT) on first dropdown of first column with Empty+Ctrl+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_LSHIFT, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_LSHIFT, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1227,25 +1227,25 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on second dropdown of first column with Ctrl+Empty
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut() }, L"" } });
                 // Case 2 : Validate the element when selecting C ('C') on third dropdown of first column with Ctrl+Empty+Empty
-                testCases.push_back({ 1, 0, 2, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 2, { VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut() }, L"" } });
                 // Case 3 : Validate the element when selecting C ('C') on second dropdown of first column with Ctrl+Empty+Empty
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'C', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, 'C', VK_INVALID }, L"", false, { { Shortcut{ VK_CONTROL }, Shortcut() }, L"" } });
                 // Case 4 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of first column with Empty+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_CONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_CONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
                 // Case 5 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of first column with Empty+Empty+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
                 // Case 6 : Validate the element when selecting Ctrl (VK_CONTROL) on second dropdown of first column with Empty+Empty+C
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
                 // Case 7 : Validate the element when selecting Null (VK_INVALID) on second dropdown of first column with Ctrl+Shift+C
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut() }, L"" } });
                 // Case 8 : Validate the element when selecting Null (VK_INVALID) on first dropdown of first column with Shift+Ctrl+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_INVALID, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut() }, L"" } });
                 // Case 9 : Validate the element when selecting None (VK_NULL) on second dropdown of first column with Ctrl+Shift+C
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut() }, L"" } });
                 // Case 10 : Validate the element when selecting None (VK_NULL) on first dropdown of first column with Shift+Ctrl+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_NULL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_NULL, VK_CONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut() }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1267,25 +1267,25 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on second dropdown of first column with Ctrl+Empty for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL }, Shortcut() }, testApp2 } });
                 // Case 2 : Validate the element when selecting C ('C') on third dropdown of first column with Ctrl+Empty+Empty for testApp2
-                testCases.push_back({ 1, 0, 2, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 2, { VK_CONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL }, Shortcut() }, testApp2 } });
                 // Case 3 : Validate the element when selecting C ('C') on second dropdown of first column with Ctrl+Empty+Empty for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, 'C', VK_INVALID }, testApp2, false, { { Shortcut{ VK_CONTROL }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, 'C', VK_INVALID }, testApp2, false, { { Shortcut{ VK_CONTROL }, Shortcut() }, testApp2 } });
                 // Case 4 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of first column with Empty+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
                 // Case 5 : Validate the element when selecting Ctrl (VK_CONTROL) on first dropdown of first column with Empty+Empty+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_CONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
                 // Case 6 : Validate the element when selecting Ctrl (VK_CONTROL) on second dropdown of first column with Empty+Empty+C for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_INVALID, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
                 // Case 7 : Validate the element when selecting Null (VK_INVALID) on second dropdown of first column with Ctrl+Shift+C for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut() }, testApp2 } });
                 // Case 8 : Validate the element when selecting Null (VK_INVALID) on first dropdown of first column with Shift+Ctrl+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_INVALID, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_INVALID, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
                 // Case 9 : Validate the element when selecting None (VK_NULL) on second dropdown of first column with Ctrl+Shift+C for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_CONTROL, VK_NULL, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_CONTROL, VK_NULL, 'C' }, testApp2, false, { { Shortcut{ VK_CONTROL, VK_SHIFT, 'C' }, Shortcut() }, testApp2 } });
                 // Case 10 : Validate the element when selecting None (VK_NULL) on first dropdown of first column with Shift+Ctrl+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_NULL, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_NULL, VK_CONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_SHIFT, VK_CONTROL, 'C' }, Shortcut() }, testApp2 } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1307,25 +1307,25 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on second dropdown of first column with LCtrl+Empty
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, L"" } });
                 // Case 2 : Validate the element when selecting C ('C') on third dropdown of first column with LCtrl+Empty+Empty
-                testCases.push_back({ 1, 0, 2, std::vector<int32_t>{ VK_LCONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 2, { VK_LCONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, L"" } });
                 // Case 3 : Validate the element when selecting C ('C') on second dropdown of first column with LCtrl+Empty+Empty
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, 'C', VK_INVALID }, L"", false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, 'C', VK_INVALID }, L"", false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, L"" } });
                 // Case 4 : Validate the element when selecting LCtrl (VK_LCONTROL) on first dropdown of first column with Empty+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
                 // Case 5 : Validate the element when selecting LCtrl (VK_LCONTROL) on first dropdown of first column with Empty+Empty+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_LCONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_LCONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
                 // Case 6 : Validate the element when selecting LCtrl (VK_LCONTROL) on second dropdown of first column with Empty+Empty+C
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_INVALID, VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_INVALID, VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ 'C' }, Shortcut() }, L"" } });
                 // Case 7 : Validate the element when selecting Null (VK_INVALID) on second dropdown of first column with LCtrl+Shift+C
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL, VK_SHIFT, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, VK_INVALID, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL, VK_SHIFT, 'C' }, Shortcut() }, L"" } });
                 // Case 8 : Validate the element when selecting Null (VK_INVALID) on first dropdown of first column with Shift+LCtrl+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_INVALID, VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_LCONTROL, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_INVALID, VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_LCONTROL, 'C' }, Shortcut() }, L"" } });
                 // Case 9 : Validate the element when selecting None (VK_NULL) on second dropdown of first column with LCtrl+Shift+C
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL, VK_SHIFT, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, VK_NULL, 'C' }, L"", false, { { Shortcut{ VK_LCONTROL, VK_SHIFT, 'C' }, Shortcut() }, L"" } });
                 // Case 10 : Validate the element when selecting None (VK_NULL) on first dropdown of first column with Shift+LCtrl+C
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_NULL, VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_LCONTROL, 'C' }, Shortcut() }, L"" } });
+                testCases.push_back({ 1, 0, 0, { VK_NULL, VK_LCONTROL, 'C' }, L"", false, { { Shortcut{ VK_SHIFT, VK_LCONTROL, 'C' }, Shortcut() }, L"" } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
@@ -1347,25 +1347,25 @@ namespace RemappingUITests
             {
                 std::vector<ValidateShortcutBufferElementArgs> testCases;
                 // Case 1 : Validate the element when selecting C ('C') on second dropdown of first column with LCtrl+Empty for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, testApp2 } });
                 // Case 2 : Validate the element when selecting C ('C') on third dropdown of first column with LCtrl+Empty+Empty for testApp2
-                testCases.push_back({ 1, 0, 2, std::vector<int32_t>{ VK_LCONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 2, { VK_LCONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, testApp2 } });
                 // Case 3 : Validate the element when selecting C ('C') on second dropdown of first column with LCtrl+Empty+Empty for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, 'C', VK_INVALID }, testApp2, false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, 'C', VK_INVALID }, testApp2, false, { { Shortcut{ VK_LCONTROL }, Shortcut() }, testApp2 } });
                 // Case 4 : Validate the element when selecting LCtrl (VK_LCONTROL) on first dropdown of first column with Empty+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
                 // Case 5 : Validate the element when selecting LCtrl (VK_LCONTROL) on first dropdown of first column with Empty+Empty+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_LCONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_LCONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
                 // Case 6 : Validate the element when selecting LCtrl (VK_LCONTROL) on second dropdown of first column with Empty+Empty+C for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_INVALID, VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_INVALID, VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ 'C' }, Shortcut() }, testApp2 } });
                 // Case 7 : Validate the element when selecting Null (VK_INVALID) on second dropdown of first column with LCtrl+Shift+C for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL, VK_SHIFT, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, VK_INVALID, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL, VK_SHIFT, 'C' }, Shortcut() }, testApp2 } });
                 // Case 8 : Validate the element when selecting Null (VK_INVALID) on first dropdown of first column with Shift+LCtrl+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_INVALID, VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_SHIFT, VK_LCONTROL, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_INVALID, VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_SHIFT, VK_LCONTROL, 'C' }, Shortcut() }, testApp2 } });
                 // Case 9 : Validate the element when selecting None (VK_NULL) on second dropdown of first column with LCtrl+Shift+C for testApp2
-                testCases.push_back({ 1, 0, 1, std::vector<int32_t>{ VK_LCONTROL, VK_NULL, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL, VK_SHIFT, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 1, { VK_LCONTROL, VK_NULL, 'C' }, testApp2, false, { { Shortcut{ VK_LCONTROL, VK_SHIFT, 'C' }, Shortcut() }, testApp2 } });
                 // Case 10 : Validate the element when selecting None (VK_NULL) on first dropdown of first column with Shift+LCtrl+C for testApp2
-                testCases.push_back({ 1, 0, 0, std::vector<int32_t>{ VK_NULL, VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_SHIFT, VK_LCONTROL, 'C' }, Shortcut() }, testApp2 } });
+                testCases.push_back({ 1, 0, 0, { VK_NULL, VK_LCONTROL, 'C' }, testApp2, false, { { Shortcut{ VK_SHIFT, VK_LCONTROL, 'C' }, Shortcut() }, testApp2 } });
 
                 RunTestCases(testCases, [this](const ValidateShortcutBufferElementArgs& testCase) {
                     // Arrange
