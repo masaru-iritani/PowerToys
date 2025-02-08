@@ -42,8 +42,8 @@ namespace RemappingUITests
             RemapBuffer remapBuffer;
 
             // Remap A to B and B to C
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, (DWORD)0x42 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x42, (DWORD)0x43 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', 'B' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'B', 'C' }), L"" });
 
             // Assert that remapping set is valid
             bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
@@ -58,12 +58,12 @@ namespace RemappingUITests
             // Remap A to Ctrl+V and B to Alt+Tab
             Shortcut s1;
             s1.SetKey(VK_CONTROL);
-            s1.SetKey(0x56);
+            s1.SetKey('V');
             Shortcut s2;
             s2.SetKey(VK_MENU);
             s2.SetKey(VK_TAB);
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, s1 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x42, s2 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', s1 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'B', s2 }), L"" });
 
             // Assert that remapping set is valid
             bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
@@ -78,12 +78,12 @@ namespace RemappingUITests
             // Remap Ctrl+V to A and Alt+Tab to B
             Shortcut s1;
             s1.SetKey(VK_CONTROL);
-            s1.SetKey(0x56);
+            s1.SetKey('V');
             Shortcut s2;
             s2.SetKey(VK_MENU);
             s2.SetKey(VK_TAB);
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ s1, (DWORD)0x41 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ s2, (DWORD)0x42 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ s1, 'A' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ s2, 'B' }), L"" });
 
             // Assert that remapping set is valid
             bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
@@ -98,16 +98,16 @@ namespace RemappingUITests
             // Remap Ctrl+V to Ctrl+D and Alt+Tab to Win+A
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            src1.SetKey(0x56);
+            src1.SetKey('V');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x44);
+            dest1.SetKey('D');
             Shortcut src2;
             src2.SetKey(VK_MENU);
             src2.SetKey(VK_TAB);
             Shortcut dest2;
             dest2.SetKey(CommonSharedConstants::VK_WIN_BOTH);
-            dest2.SetKey(0x41);
+            dest2.SetKey('A');
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, dest1 }), L"" });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src2, dest2 }), L"" });
 
@@ -124,20 +124,20 @@ namespace RemappingUITests
             // Remap Ctrl+V to Ctrl+D, Alt+Tab to A, A to B and B to Win+A
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            src1.SetKey(0x56);
+            src1.SetKey('V');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x44);
+            dest1.SetKey('D');
             Shortcut src2;
             src2.SetKey(VK_MENU);
             src2.SetKey(VK_TAB);
             Shortcut dest2;
             dest2.SetKey(CommonSharedConstants::VK_WIN_BOTH);
-            dest2.SetKey(0x41);
+            dest2.SetKey('A');
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, dest1 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src2, (DWORD)0x41 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, (DWORD)0x42 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x42, dest2 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src2, 'A' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', 'B' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'B', dest2 }), L"" });
 
             // Assert that remapping set is valid
             bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::NoError);
@@ -150,7 +150,7 @@ namespace RemappingUITests
             RemapBuffer remapBuffer;
 
             // Remap A to NULL
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, (DWORD)0 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', (DWORD)0 }), L"" });
 
             // Assert that remapping set is invalid
             bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::RemapUnsuccessful);
@@ -165,7 +165,7 @@ namespace RemappingUITests
             // Remap A to incomplete shortcut (Ctrl)
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, src1 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', src1 }), L"" });
 
             // Assert that remapping set is invalid
             bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::RemapUnsuccessful);
@@ -180,9 +180,9 @@ namespace RemappingUITests
             // Remap A to B and A to Ctrl+C
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            src1.SetKey(0x43);
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, (DWORD)0x42 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, src1 }), L"" });
+            src1.SetKey('C');
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', 'B' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', src1 }), L"" });
 
             // Assert that remapping set is invalid
             bool isSuccess = (LoadingAndSavingRemappingHelper::CheckIfRemappingsAreValid(remapBuffer) == ShortcutErrorType::RemapUnsuccessful);
@@ -197,11 +197,11 @@ namespace RemappingUITests
             // Remap Ctrl+A to B and Ctrl+A to Ctrl+V
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            src1.SetKey(0x41);
+            src1.SetKey('A');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x56);
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, (DWORD)0x42 }), L"" });
+            dest1.SetKey('V');
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, 'B' }), L"" });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, dest1 }), L"" });
 
             // Assert that remapping set is invalid
@@ -217,11 +217,11 @@ namespace RemappingUITests
             // Remap Ctrl+A to B and Ctrl+A to Ctrl+V for testApp1
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            src1.SetKey(0x41);
+            src1.SetKey('A');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x56);
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, (DWORD)0x42 }), testApp1 });
+            dest1.SetKey('V');
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, 'B' }), testApp1 });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, dest1 }), testApp1 });
 
             // Assert that remapping set is invalid
@@ -237,11 +237,11 @@ namespace RemappingUITests
             // Remap Ctrl+A to B for testApp1 and Ctrl+A to Ctrl+V for testApp2
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            src1.SetKey(0x41);
+            src1.SetKey('A');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x56);
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, (DWORD)0x42 }), testApp1 });
+            dest1.SetKey('V');
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, 'B' }), testApp1 });
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, dest1 }), testApp2 });
 
             // Assert that remapping set is valid
@@ -264,11 +264,11 @@ namespace RemappingUITests
             RemapBuffer remapBuffer;
 
             // Remap A to B
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, (DWORD)0x42 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', 'B' }), L"" });
 
             // Assert that only A is orphaned
             Assert::AreEqual((size_t)1, LoadingAndSavingRemappingHelper::GetOrphanedKeys(remapBuffer).size());
-            Assert::AreEqual((DWORD)0x41, LoadingAndSavingRemappingHelper::GetOrphanedKeys(remapBuffer)[0]);
+            Assert::AreEqual(static_cast<DWORD>('A'), LoadingAndSavingRemappingHelper::GetOrphanedKeys(remapBuffer)[0]);
         }
 
         // Test if the GetOrphanedKeys method return an empty vector on passing swapped key remaps
@@ -277,8 +277,8 @@ namespace RemappingUITests
             RemapBuffer remapBuffer;
 
             // Remap A to B and B to A
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, (DWORD)0x42 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x42, (DWORD)0x41 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', 'B' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'B', 'A' }), L"" });
 
             // Assert that there are no orphaned keys
             Assert::IsTrue(LoadingAndSavingRemappingHelper::GetOrphanedKeys(remapBuffer).empty());
@@ -292,13 +292,13 @@ namespace RemappingUITests
             // Remap A to Ctrl+B and C to A
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x42);
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, dest1 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x43, (DWORD)0x41 }), L"" });
+            dest1.SetKey('B');
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', dest1 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'C', 'A' }), L"" });
 
             // Assert that only C is orphaned
             Assert::AreEqual((size_t)1, LoadingAndSavingRemappingHelper::GetOrphanedKeys(remapBuffer).size());
-            Assert::AreEqual((DWORD)0x43, LoadingAndSavingRemappingHelper::GetOrphanedKeys(remapBuffer)[0]);
+            Assert::AreEqual(static_cast<DWORD>('C'), LoadingAndSavingRemappingHelper::GetOrphanedKeys(remapBuffer)[0]);
         }
 
         // Test if the PreProcessRemapTable method combines all the modifier pairs when the left and right modifiers are remapped to the same target
@@ -307,24 +307,24 @@ namespace RemappingUITests
             SingleKeyRemapTable remapTable;
 
             // Remap LCtrl and RCtrl to A, LAlt and RAlt to B, LShift and RShift to C, LWin and RWin to D
-            remapTable[VK_LCONTROL] = (DWORD)0x41;
-            remapTable[VK_RCONTROL] = (DWORD)0x41;
-            remapTable[VK_LMENU] = (DWORD)0x42;
-            remapTable[VK_RMENU] = (DWORD)0x42;
-            remapTable[VK_LSHIFT] = (DWORD)0x43;
-            remapTable[VK_RSHIFT] = (DWORD)0x43;
-            remapTable[VK_LWIN] = (DWORD)0x44;
-            remapTable[VK_RWIN] = (DWORD)0x44;
+            remapTable[VK_LCONTROL] = 'A';
+            remapTable[VK_RCONTROL] = 'A';
+            remapTable[VK_LMENU] = 'B';
+            remapTable[VK_RMENU] = 'B';
+            remapTable[VK_LSHIFT] = 'C';
+            remapTable[VK_RSHIFT] = 'C';
+            remapTable[VK_LWIN] = 'D';
+            remapTable[VK_RWIN] = 'D';
 
             // Pre process table
             LoadingAndSavingRemappingHelper::PreProcessRemapTable(remapTable);
 
             // Expected Ctrl remapped to A, Alt to B, Shift to C, Win to D
             SingleKeyRemapTable expectedTable;
-            expectedTable[VK_CONTROL] = (DWORD)0x41;
-            expectedTable[VK_MENU] = (DWORD)0x42;
-            expectedTable[VK_SHIFT] = (DWORD)0x43;
-            expectedTable[CommonSharedConstants::VK_WIN_BOTH] = (DWORD)0x44;
+            expectedTable[VK_CONTROL] = 'A';
+            expectedTable[VK_MENU] = 'B';
+            expectedTable[VK_SHIFT] = 'C';
+            expectedTable[CommonSharedConstants::VK_WIN_BOTH] = 'D';
 
             bool areTablesEqual = (expectedTable == remapTable);
             Assert::IsTrue(areTablesEqual);
@@ -336,28 +336,28 @@ namespace RemappingUITests
             SingleKeyRemapTable remapTable;
 
             // Remap left modifiers to A and right modifiers to B
-            remapTable[VK_LCONTROL] = (DWORD)0x41;
-            remapTable[VK_RCONTROL] = (DWORD)0x42;
-            remapTable[VK_LMENU] = (DWORD)0x41;
-            remapTable[VK_RMENU] = (DWORD)0x42;
-            remapTable[VK_LSHIFT] = (DWORD)0x41;
-            remapTable[VK_RSHIFT] = (DWORD)0x42;
-            remapTable[VK_LWIN] = (DWORD)0x41;
-            remapTable[VK_RWIN] = (DWORD)0x42;
+            remapTable[VK_LCONTROL] = 'A';
+            remapTable[VK_RCONTROL] = 'B';
+            remapTable[VK_LMENU] = 'A';
+            remapTable[VK_RMENU] = 'B';
+            remapTable[VK_LSHIFT] = 'A';
+            remapTable[VK_RSHIFT] = 'B';
+            remapTable[VK_LWIN] = 'A';
+            remapTable[VK_RWIN] = 'B';
 
             // Pre process table
             LoadingAndSavingRemappingHelper::PreProcessRemapTable(remapTable);
 
             // Expected unchanged table
             SingleKeyRemapTable expectedTable;
-            expectedTable[VK_LCONTROL] = (DWORD)0x41;
-            expectedTable[VK_RCONTROL] = (DWORD)0x42;
-            expectedTable[VK_LMENU] = (DWORD)0x41;
-            expectedTable[VK_RMENU] = (DWORD)0x42;
-            expectedTable[VK_LSHIFT] = (DWORD)0x41;
-            expectedTable[VK_RSHIFT] = (DWORD)0x42;
-            expectedTable[VK_LWIN] = (DWORD)0x41;
-            expectedTable[VK_RWIN] = (DWORD)0x42;
+            expectedTable[VK_LCONTROL] = 'A';
+            expectedTable[VK_RCONTROL] = 'B';
+            expectedTable[VK_LMENU] = 'A';
+            expectedTable[VK_RMENU] = 'B';
+            expectedTable[VK_LSHIFT] = 'A';
+            expectedTable[VK_RSHIFT] = 'B';
+            expectedTable[VK_LWIN] = 'A';
+            expectedTable[VK_RWIN] = 'B';
 
             bool areTablesEqual = (expectedTable == remapTable);
             Assert::IsTrue(areTablesEqual);
@@ -370,7 +370,7 @@ namespace RemappingUITests
             RemapBuffer remapBuffer;
 
             // Remap A to B
-            testShortcuts.AddSingleKeyRemap(0x41, (DWORD)0x42);
+            testShortcuts.AddSingleKeyRemap('A', 'B');
 
             // Apply the single key remaps from the buffer to the keyboard manager state variable
             LoadingAndSavingRemappingHelper::ApplySingleKeyRemappings(testShortcuts, remapBuffer, false);
@@ -388,21 +388,21 @@ namespace RemappingUITests
             // Add A->B, B->Ctrl+V, C to incomplete shortcut and D to incomplete key remappings to the buffer
             Shortcut s1;
             s1.SetKey(VK_CONTROL);
-            s1.SetKey(0x56);
+            s1.SetKey('V');
             Shortcut s2;
             s2.SetKey(VK_LMENU);
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x41, (DWORD)0x42 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x42, s1 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x43, (DWORD)0 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)0x44, s2 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'A', 'B' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'B', s1 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'C', (DWORD)0 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ 'D', s2 }), L"" });
 
             // Apply the single key remaps from the buffer to the keyboard manager state variable
             LoadingAndSavingRemappingHelper::ApplySingleKeyRemappings(testShortcuts, remapBuffer, false);
 
             // Expected A remapped to B, B remapped to Ctrl+V
             SingleKeyRemapTable expectedTable;
-            expectedTable[0x41] = (DWORD)0x42;
-            expectedTable[0x42] = s1;
+            expectedTable['A'] = 'B';
+            expectedTable['B'] = s1;
 
             bool areTablesEqual = (expectedTable == testShortcuts.singleKeyReMap);
             Assert::IsTrue(areTablesEqual);
@@ -415,24 +415,24 @@ namespace RemappingUITests
             RemapBuffer remapBuffer;
 
             // Add Ctrl->A, Alt->B, Shift->C and Win->D remappings to the buffer
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)VK_CONTROL, (DWORD)0x41 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)VK_MENU, (DWORD)0x42 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)VK_SHIFT, (DWORD)0x43 }), L"" });
-            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)CommonSharedConstants::VK_WIN_BOTH, (DWORD)0x44 }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)VK_CONTROL, 'A' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)VK_MENU, 'B' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)VK_SHIFT, 'C' }), L"" });
+            remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ (DWORD)CommonSharedConstants::VK_WIN_BOTH, 'D' }), L"" });
 
             // Apply the single key remaps from the buffer to the keyboard manager state variable
             LoadingAndSavingRemappingHelper::ApplySingleKeyRemappings(testShortcuts, remapBuffer, false);
 
             // Expected LCtrl/RCtrl remapped to A, LAlt/RAlt to B, LShift/RShift to C, LWin/RWin to D
             SingleKeyRemapTable expectedTable;
-            expectedTable[VK_LCONTROL] = (DWORD)0x41;
-            expectedTable[VK_RCONTROL] = (DWORD)0x41;
-            expectedTable[VK_LMENU] = (DWORD)0x42;
-            expectedTable[VK_RMENU] = (DWORD)0x42;
-            expectedTable[VK_LSHIFT] = (DWORD)0x43;
-            expectedTable[VK_RSHIFT] = (DWORD)0x43;
-            expectedTable[VK_LWIN] = (DWORD)0x44;
-            expectedTable[VK_RWIN] = (DWORD)0x44;
+            expectedTable[VK_LCONTROL] = 'A';
+            expectedTable[VK_RCONTROL] = 'A';
+            expectedTable[VK_LMENU] = 'B';
+            expectedTable[VK_RMENU] = 'B';
+            expectedTable[VK_LSHIFT] = 'C';
+            expectedTable[VK_RSHIFT] = 'C';
+            expectedTable[VK_LWIN] = 'D';
+            expectedTable[VK_RWIN] = 'D';
 
             bool areTablesEqual = (expectedTable == testShortcuts.singleKeyReMap);
             Assert::IsTrue(areTablesEqual);
@@ -447,16 +447,16 @@ namespace RemappingUITests
             // Remap Ctrl+A to Ctrl+B for all apps and Ctrl+C to Alt+V for testApp1
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            src1.SetKey(0x41);
+            src1.SetKey('A');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x42);
+            dest1.SetKey('B');
             Shortcut src2;
             src2.SetKey(VK_CONTROL);
-            src2.SetKey(0x43);
+            src2.SetKey('C');
             Shortcut dest2;
             dest2.SetKey(VK_MENU);
-            dest2.SetKey(0x56);
+            dest2.SetKey('V');
             testShortcuts.AddOSLevelShortcut(src1, dest1);
             testShortcuts.AddAppSpecificShortcut(testApp1, src1, dest1);
 
@@ -478,22 +478,22 @@ namespace RemappingUITests
             // Add Ctrl+F->Alt+V, Ctrl+G->Ctrl+B, Ctrl+A->incomplete shortcut and  Ctrl+C->incomplete key app specific remappings to buffer
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            src1.SetKey(0x41);
+            src1.SetKey('A');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x42);
+            dest1.SetKey('B');
             Shortcut src2;
             src2.SetKey(VK_CONTROL);
-            src2.SetKey(0x43);
+            src2.SetKey('C');
             Shortcut dest2;
             dest2.SetKey(VK_MENU);
-            dest2.SetKey(0x56);
+            dest2.SetKey('V');
             Shortcut src3;
             src3.SetKey(VK_CONTROL);
-            src3.SetKey(0x46);
+            src3.SetKey('F');
             Shortcut src4;
             src4.SetKey(VK_CONTROL);
-            src4.SetKey(0x47);
+            src4.SetKey('G');
             Shortcut dest4;
             dest4.SetKey(VK_CONTROL);
             remapBuffer.push_back(RemapBufferRow{ RemapBufferItem({ src1, dest1 }), L"" });

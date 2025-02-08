@@ -51,10 +51,10 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -67,9 +67,9 @@ namespace RemappingLogicTests
 
             // Ctrl and A key states should be unchanged, Alt and V key states should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test if correct keyboard states are set for a 2 key shortcut remap with same modifiers key down
@@ -78,10 +78,10 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Ctrl+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -93,9 +93,9 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs);
 
             // A key state should be unchanged, Ctrl and V key states should be true
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test if correct keyboard states are set for a 2 key shortcut remap with different modifiers key down followed by key up
@@ -104,10 +104,10 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -122,9 +122,9 @@ namespace RemappingLogicTests
 
             // Ctrl, A, Alt, V key states should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set for a 2 key shortcut remap with same modifiers key down followed by key up
@@ -133,10 +133,10 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Ctrl+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -151,8 +151,8 @@ namespace RemappingLogicTests
 
             // Ctrl, A, V key states should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set when a 2 key shortcut is remapped, and a 3 key shortcut containing those keys is invoked - Ex: Ctrl+A remapped, but user presses Ctrl+Shift+A
@@ -161,10 +161,10 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -179,9 +179,9 @@ namespace RemappingLogicTests
             // Since Ctrl+Shift+A is not remapped, no remapping should be invoked
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set for a 3 key shortcut remap with different modifiers key down
@@ -191,11 +191,11 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
             dest.SetKey(VK_LWIN);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -210,10 +210,10 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A key states should be unchanged, Alt, LWin, V key states should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test if correct keyboard states are set for a 3 key shortcut remap with partially different modifiers key down
@@ -223,11 +223,11 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -241,10 +241,10 @@ namespace RemappingLogicTests
 
             // Shift, A key states should be unchanged, Alt, Ctrl, V key states should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test if correct keyboard states are set for a 3 key shortcut remap with same modifiers key down
@@ -254,11 +254,11 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
             dest.SetKey(VK_SHIFT);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -271,10 +271,10 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs);
 
             // A key state should be unchanged, Ctrl, Shift, V key states should be true
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test if correct keyboard states are set for a 3 key shortcut remap with different modifiers key down followed by key up
@@ -284,11 +284,11 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
             dest.SetKey(VK_LWIN);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -306,10 +306,10 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A, Alt, LWin, V key states should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set for a 3 key shortcut remap with partially different modifiers key down followed by key up
@@ -319,11 +319,11 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -341,9 +341,9 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A, Alt, V key states should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set for a 3 key shortcut remap with same modifiers key down followed by key up
@@ -353,11 +353,11 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
             dest.SetKey(VK_SHIFT);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -375,8 +375,8 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A, V key states should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set when a 3 key shortcut is remapped, and a 2 key shortcut which is a subset of those keys is invoked - Ex: Ctrl+Shift+A remapped, but user presses Ctrl+A
@@ -386,10 +386,10 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -402,10 +402,10 @@ namespace RemappingLogicTests
 
             // Since Ctrl+A is not remapped, no remapping should be invoked
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set for a 3 key to 2 key shortcut remap with different modifiers key down
@@ -415,10 +415,10 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -433,9 +433,9 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A key states should be unchanged, Alt, V key states should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test if correct keyboard states are set for a 3 key to 2 key shortcut remap with partially different modifiers key down
@@ -445,10 +445,10 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -462,9 +462,9 @@ namespace RemappingLogicTests
 
             // Shift, A key states should be unchanged, Ctrl, V key states should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test if correct keyboard states are set for a 3 key to 2 key shortcut remap with different modifiers key down followed by key up
@@ -474,10 +474,10 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -495,9 +495,9 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A, Alt, V key states should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set for a 3 key to 2 key shortcut remap with partially different modifiers key down followed by key up
@@ -507,10 +507,10 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -528,8 +528,8 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A, V key states should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set for a 2 key to 3 key shortcut remap with different modifiers key down
@@ -538,11 +538,11 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt+Shift+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
             dest.SetKey(VK_SHIFT);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -555,10 +555,10 @@ namespace RemappingLogicTests
 
             // Ctrl, A key states should be unchanged, Alt, Shift, V key states should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test if correct keyboard states are set for a 2 key to 3 key shortcut remap with partially different modifiers key down
@@ -567,11 +567,11 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Ctrl+Shift+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
             dest.SetKey(VK_SHIFT);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -583,10 +583,10 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs);
 
             // A key state should be unchanged, Ctrl, Shift, V key states should be true
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test if correct keyboard states are set for a 2 key to 3 key shortcut remap with different modifiers key down followed by key up
@@ -595,11 +595,11 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt+Shift+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
             dest.SetKey(VK_SHIFT);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -614,10 +614,10 @@ namespace RemappingLogicTests
 
             // Ctrl, A, Alt, Shift, V key states should be unchanged
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set for a 2 key to 3 key shortcut remap with partially different modifiers key down followed by key up
@@ -626,11 +626,11 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Ctrl+Shift+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
             dest.SetKey(VK_SHIFT);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -645,9 +645,9 @@ namespace RemappingLogicTests
 
             // Ctrl, A, Shift, V key states should be unchanged
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set if a shortcut remap is pressed and then an unremapped shortcut with the same modifier is pressed - Ex: Ctrl+A is remapped. User invokes Ctrl+A then releases A and presses C (while Ctrl is held), should invoke Ctrl+C
@@ -656,11 +656,11 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt+Shift+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
             dest.SetKey(VK_SHIFT);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -675,11 +675,11 @@ namespace RemappingLogicTests
 
             // A, Alt, Shift, V key states should be unchanged, Ctrl, C should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x43), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('C'), true);
         }
 
         // Test if correct keyboard states are set for a shortcut remap with win both modifier
@@ -688,19 +688,19 @@ namespace RemappingLogicTests
             // Remap Win+A to Alt+V
             Shortcut src;
             src.SetKey(CommonSharedConstants::VK_WIN_BOTH);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             // Remap Alt+D to Win+B
             Shortcut dest1;
             dest1.SetKey(CommonSharedConstants::VK_WIN_BOTH);
-            dest1.SetKey(0x42);
+            dest1.SetKey('B');
             Shortcut src1;
             src1.SetKey(VK_MENU);
-            src1.SetKey(0x44);
+            src1.SetKey('D');
             testState.AddOSLevelShortcut(src1, dest1);
 
             // Test 2 cases for first remap - LWin, A, A(Up), LWin(Up). RWin, A, A(Up), RWin(Up)
@@ -715,9 +715,9 @@ namespace RemappingLogicTests
             // LWin, RWin, A key states should be unchanged, Alt, V should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_RWIN), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'A', .dwFlags = KEYEVENTF_KEYUP } },
@@ -730,9 +730,9 @@ namespace RemappingLogicTests
             // LWin, RWin, A, Alt, V key states should be unchanged
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_RWIN), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
 
             // Case 1.2
             std::vector<INPUT> inputs3{
@@ -746,9 +746,9 @@ namespace RemappingLogicTests
             // LWin, RWin, A key states should be unchanged, Alt, V should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_RWIN), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
 
             std::vector<INPUT> inputs4{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'A', .dwFlags = KEYEVENTF_KEYUP } },
@@ -761,9 +761,9 @@ namespace RemappingLogicTests
             // LWin, RWin, A, Alt, V key states should be unchanged
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_RWIN), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
 
             // Case 2
             std::vector<INPUT> inputs5{
@@ -777,9 +777,9 @@ namespace RemappingLogicTests
             // Alt, D, RWin key states should be unchanged, LWin, B should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_RWIN), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x44), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('D'), false);
 
             std::vector<INPUT> inputs6{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'D', .dwFlags = KEYEVENTF_KEYUP } },
@@ -792,9 +792,9 @@ namespace RemappingLogicTests
             // LWin, RWin, B, Alt, D key states should be unchanged
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_RWIN), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x44), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('D'), false);
         }
 
         // Test if correct keyboard states are set if a win both shortcut remap is pressed and then an unremapped shortcut with the LWin modifier is pressed
@@ -803,10 +803,10 @@ namespace RemappingLogicTests
             // Remap Win+A to Alt+V
             Shortcut src;
             src.SetKey(CommonSharedConstants::VK_WIN_BOTH);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             // LWin, A, A(Up), C(Down)
@@ -822,11 +822,11 @@ namespace RemappingLogicTests
 
             // RWin, A, Alt, V key states should be unchanged, LWin, C should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x43), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('C'), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_RWIN), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if correct keyboard states are set if a win both shortcut remap is pressed and then an unremapped shortcut with the RWin modifier is pressed
@@ -835,10 +835,10 @@ namespace RemappingLogicTests
             // Remap Win+A to Alt+V
             Shortcut src;
             src.SetKey(CommonSharedConstants::VK_WIN_BOTH);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             // RWin, A, A(Up), C(Down)
@@ -855,10 +855,10 @@ namespace RemappingLogicTests
             // LWin, A, Alt, V key states should be unchanged, RWin, C should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_RWIN), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x43), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('C'), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 
         // Test if target modifier is still held down even if the action key of the original shortcut is released - required for Alt+Tab/Win+Space cases
@@ -867,7 +867,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt+Tab
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_MENU);
             dest.SetKey(VK_TAB);
@@ -884,7 +884,7 @@ namespace RemappingLogicTests
 
             // Ctrl, A, Tab key states should be unchanged, Alt should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_TAB), false);
         }
@@ -895,19 +895,19 @@ namespace RemappingLogicTests
             // Remap Alt+A to Ctrl+C
             Shortcut src;
             src.SetKey(VK_MENU);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x43);
+            dest.SetKey('C');
             testState.AddOSLevelShortcut(src, dest);
 
             // Remap Alt+V to Ctrl+X
             Shortcut src1;
             src1.SetKey(VK_MENU);
-            src1.SetKey(0x56);
+            src1.SetKey('V');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x58);
+            dest1.SetKey('X');
             testState.AddOSLevelShortcut(src1, dest1);
 
             std::vector<INPUT> inputs{
@@ -922,11 +922,11 @@ namespace RemappingLogicTests
 
             // Alt, A, C, V key states should be unchanged, Ctrl, X should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x43), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('C'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x58), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('X'), true);
         }
 
         // Test if invoking two remapped shortcuts (with same modifiers between original and new shortcut) that share modifiers in succession sets the correct keyboard states
@@ -935,19 +935,19 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Ctrl+C
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x43);
+            dest.SetKey('C');
             testState.AddOSLevelShortcut(src, dest);
 
             // Remap Ctrl+V to Ctrl+X
             Shortcut src1;
             src1.SetKey(VK_CONTROL);
-            src1.SetKey(0x56);
+            src1.SetKey('V');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x58);
+            dest1.SetKey('X');
             testState.AddOSLevelShortcut(src1, dest1);
 
             std::vector<INPUT> inputs{
@@ -961,11 +961,11 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs);
 
             // A, C, V key states should be unchanged, Ctrl, X should be true
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x43), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('C'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x58), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('X'), true);
         }
 
         // Tests for shortcut to key remappings
@@ -976,7 +976,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
 
             std::vector<INPUT> inputs1{
@@ -989,7 +989,7 @@ namespace RemappingLogicTests
 
             // Ctrl, A should be false, Alt should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
 
             std::vector<INPUT> inputs2{
@@ -1002,7 +1002,7 @@ namespace RemappingLogicTests
 
             // Ctrl, A, Alt should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
         }
 
@@ -1013,7 +1013,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
 
             std::vector<INPUT> inputs1{
@@ -1028,7 +1028,7 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A should be false, Alt should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
 
             std::vector<INPUT> inputs2{
@@ -1043,7 +1043,7 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A, Alt should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
         }
 
@@ -1053,7 +1053,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Ctrl
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_CONTROL);
 
             std::vector<INPUT> inputs1{
@@ -1066,7 +1066,7 @@ namespace RemappingLogicTests
 
             // A should be false, Ctrl should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'A', .dwFlags = KEYEVENTF_KEYUP } },
@@ -1078,7 +1078,7 @@ namespace RemappingLogicTests
 
             // Ctrl, A should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
         }
 
         // Test if correct keyboard states are set for a 3 key shortcut to a single key remap containing that key on key down followed by key up
@@ -1088,7 +1088,7 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(VK_CONTROL);
             src.SetKey(VK_SHIFT);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_CONTROL);
 
             std::vector<INPUT> inputs1{
@@ -1103,7 +1103,7 @@ namespace RemappingLogicTests
             // Shift, A should be false, Ctrl should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'A', .dwFlags = KEYEVENTF_KEYUP } },
@@ -1117,7 +1117,7 @@ namespace RemappingLogicTests
             // Ctrl, Shift, A should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
         }
 
         // Test if keyboard state is not reverted for a shortcut to a single key remap (target key is not a part of the shortcut) on key down followed by releasing the action key
@@ -1126,7 +1126,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
 
             std::vector<INPUT> inputs{
@@ -1140,7 +1140,7 @@ namespace RemappingLogicTests
 
             // Ctrl, A, Alt should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
             // Shortcut invoked state should be true
             Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
@@ -1152,7 +1152,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Ctrl
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_CONTROL);
 
             std::vector<INPUT> inputs{
@@ -1166,7 +1166,7 @@ namespace RemappingLogicTests
 
             // Both A and Ctrl should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             // Shortcut invoked state should be true
             Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -1177,8 +1177,8 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to A
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
-            testState.AddOSLevelShortcut(src, (DWORD)0x41);
+            src.SetKey('A');
+            testState.AddOSLevelShortcut(src, 'A');
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1191,7 +1191,7 @@ namespace RemappingLogicTests
 
             // Ctrl, A should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             // Shortcut invoked state should be true
             Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -1202,7 +1202,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
 
             std::vector<INPUT> inputs{
@@ -1216,7 +1216,7 @@ namespace RemappingLogicTests
 
             // A, Alt, Ctrl should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
             // Shortcut invoked state should be false
             Assert::AreEqual(false, testState.osLevelShortcutReMap[src].isShortcutInvoked);
@@ -1228,7 +1228,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Ctrl
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_CONTROL);
 
             std::vector<INPUT> inputs{
@@ -1242,7 +1242,7 @@ namespace RemappingLogicTests
 
             // A, Ctrl should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             // Shortcut invoked state should be false
             Assert::AreEqual(false, testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -1253,8 +1253,8 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to A
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
-            testState.AddOSLevelShortcut(src, (DWORD)0x41);
+            src.SetKey('A');
+            testState.AddOSLevelShortcut(src, 'A');
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1267,7 +1267,7 @@ namespace RemappingLogicTests
 
             // A, Ctrl should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
         }
 
         // Test if remap is invoked for a shortcut to a single key remap when the shortcut is invoked along with other keys pressed before it
@@ -1276,7 +1276,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
 
             std::vector<INPUT> inputs{
@@ -1290,9 +1290,9 @@ namespace RemappingLogicTests
 
             // A, Ctrl should be false, B, Alt should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
         }
 
         // Test if remap is invoked for a shortcut to a single key remap and the keyboard state is reverted back to the physical keys when the shortcut is invoked along with other keys pressed before it and the action key is released
@@ -1301,7 +1301,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
 
             std::vector<INPUT> inputs{
@@ -1316,9 +1316,9 @@ namespace RemappingLogicTests
 
             // Alt, A should be false, Ctrl, B should be true
             Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(VK_CONTROL));
-            Assert::AreEqual(false, mockedInputHandler.GetVirtualKeyState(0x41));
+            Assert::AreEqual(false, mockedInputHandler.GetVirtualKeyState('A'));
             Assert::AreEqual(false, mockedInputHandler.GetVirtualKeyState(VK_MENU));
-            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(0x42));
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState('B'));
             // Shortcut invoked state should be false
             Assert::AreEqual(false, testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -1329,13 +1329,13 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
             // Remap Shift+Ctrl+A to Ctrl+V
             src.SetKey(VK_SHIFT);
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -1350,9 +1350,9 @@ namespace RemappingLogicTests
             // Alt, A, Shift should be false, Ctrl, V should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
         }
 
         // Test that remap is not invoked for a shortcut to a single key remap when a larger remapped shortcut to key containing those shortcut keys is invoked
@@ -1361,11 +1361,11 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
             // Remap Shift+Ctrl+A to B
             src.SetKey(VK_SHIFT);
-            testState.AddOSLevelShortcut(src, (DWORD)0x42);
+            testState.AddOSLevelShortcut(src, 'B');
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_SHIFT } },
@@ -1379,9 +1379,9 @@ namespace RemappingLogicTests
             // Alt, Ctrl, A, Shift should be false, B should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_SHIFT), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
         }
 
         // Test if remap is invoked and then reverted to physical keys for a shortcut to a single key remap when the shortcut is invoked along with other keys pressed after it and then action key is released
@@ -1390,7 +1390,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
 
             std::vector<INPUT> inputs1{
@@ -1404,9 +1404,9 @@ namespace RemappingLogicTests
 
             // A, Ctrl should be false, B, Alt should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
             // Shortcut invoked state should be true
             Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
 
@@ -1419,9 +1419,9 @@ namespace RemappingLogicTests
 
             // A, Alt should be false, Ctrl, B should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
             // Shortcut invoked state should be false
             Assert::AreEqual(false, testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -1432,7 +1432,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1445,9 +1445,9 @@ namespace RemappingLogicTests
 
             // A, Ctrl should be false, B, Alt should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
             // Shortcut invoked state should be true
             Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
 
@@ -1460,9 +1460,9 @@ namespace RemappingLogicTests
 
             // Ctrl, Alt, A should be false, B should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
             // Shortcut invoked state should be false
             Assert::AreEqual(false, testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -1473,7 +1473,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Alt
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_MENU);
 
             std::vector<INPUT> inputs1{
@@ -1487,7 +1487,7 @@ namespace RemappingLogicTests
 
             // A, Ctrl, Alt should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
             // Shortcut invoked state should be true
             Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
@@ -1501,9 +1501,9 @@ namespace RemappingLogicTests
 
             // A, Alt should be false, Ctrl, B should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
             // Shortcut invoked state should be false
             Assert::AreEqual(false, testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -1514,7 +1514,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Win both
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)CommonSharedConstants::VK_WIN_BOTH);
 
             std::vector<INPUT> inputs1{
@@ -1527,7 +1527,7 @@ namespace RemappingLogicTests
 
             // A, Ctrl should be false, LWin should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_LWIN), true);
 
             std::vector<INPUT> inputs2{
@@ -1540,7 +1540,7 @@ namespace RemappingLogicTests
 
             // Ctrl, A, LWin should be false
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
         }
 
@@ -1552,16 +1552,16 @@ namespace RemappingLogicTests
             // Remap Alt+A to D
             Shortcut src;
             src.SetKey(VK_MENU);
-            src.SetKey(0x41);
-            testState.AddOSLevelShortcut(src, (DWORD)0x44);
+            src.SetKey('A');
+            testState.AddOSLevelShortcut(src, 'D');
 
             // Remap Alt+V to Ctrl+X
             Shortcut src1;
             src1.SetKey(VK_MENU);
-            src1.SetKey(0x56);
+            src1.SetKey('V');
             Shortcut dest1;
             dest1.SetKey(VK_CONTROL);
-            dest1.SetKey(0x58);
+            dest1.SetKey('X');
             testState.AddOSLevelShortcut(src1, dest1);
 
             std::vector<INPUT> inputs{
@@ -1576,11 +1576,11 @@ namespace RemappingLogicTests
 
             // Alt, A, D, V key states should be unchanged, Ctrl, X should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x44), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('D'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x58), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('X'), true);
         }
 
         // Test if invoking two remapped shortcuts that share modifiers, where the first one remaps to a key and the second one remaps to a key, in succession sets the correct keyboard states
@@ -1589,14 +1589,14 @@ namespace RemappingLogicTests
             // Remap Alt+A to D
             Shortcut src;
             src.SetKey(VK_MENU);
-            src.SetKey(0x41);
-            testState.AddOSLevelShortcut(src, (DWORD)0x44);
+            src.SetKey('A');
+            testState.AddOSLevelShortcut(src, 'D');
 
             // Remap Alt+V to X
             Shortcut src1;
             src1.SetKey(VK_MENU);
-            src1.SetKey(0x56);
-            testState.AddOSLevelShortcut(src1, (DWORD)0x58);
+            src1.SetKey('V');
+            testState.AddOSLevelShortcut(src1, 'X');
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_MENU } },
@@ -1610,10 +1610,10 @@ namespace RemappingLogicTests
 
             // Alt, A, D, V key states should be unchanged, X should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x44), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x58), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('D'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('X'), true);
         }
 
         // Test if invoking two remapped shortcuts that share modifiers, where the first one remaps to a shortcut and the second one remaps to a key, in succession sets the correct keyboard states
@@ -1622,17 +1622,17 @@ namespace RemappingLogicTests
             // Remap Alt+A to Ctrl+C
             Shortcut src;
             src.SetKey(VK_MENU);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x43);
+            dest.SetKey('C');
             testState.AddOSLevelShortcut(src, dest);
 
             // Remap Alt+V to X
             Shortcut src1;
             src1.SetKey(VK_MENU);
-            src1.SetKey(0x56);
-            testState.AddOSLevelShortcut(src1, (DWORD)0x58);
+            src1.SetKey('V');
+            testState.AddOSLevelShortcut(src1, 'X');
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_MENU } },
@@ -1646,11 +1646,11 @@ namespace RemappingLogicTests
 
             // Alt, A, C, V, Ctrl key states should be unchanged, X should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x44), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('D'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x58), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('X'), true);
         }
 
         // Test if correct keyboard states are set if a shortcut to single key remap is pressed and then an unremapped shortcut with the same modifier is pressed - Ex: Ctrl+A is remapped. User invokes Ctrl+A then releases A and presses C (while Ctrl is held), should invoke Ctrl+C
@@ -1659,8 +1659,8 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
-            testState.AddOSLevelShortcut(src, (DWORD)0x56);
+            src.SetKey('A');
+            testState.AddOSLevelShortcut(src, 'V');
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_CONTROL } },
@@ -1674,9 +1674,9 @@ namespace RemappingLogicTests
 
             // A, V key states should be unchanged, Ctrl, C should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x43), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('C'), true);
         }
 
         // Tests for IME Caps Lock workaround on shortcut remappings
@@ -1698,7 +1698,7 @@ namespace RemappingLogicTests
             src.SetKey(VK_CAPITAL);
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x41);
+            dest.SetKey('A');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -1756,7 +1756,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Win+CapsLock
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(CommonSharedConstants::VK_WIN_BOTH);
             dest.SetKey(VK_CAPITAL);
@@ -1789,7 +1789,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Win+CapsLock
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(CommonSharedConstants::VK_WIN_BOTH);
             dest.SetKey(VK_CAPITAL);
@@ -1822,7 +1822,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to CapsLock
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_CAPITAL);
 
             std::vector<INPUT> inputs{
@@ -1852,7 +1852,7 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to CapsLock
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             testState.AddOSLevelShortcut(src, (DWORD)VK_CAPITAL);
 
             std::vector<INPUT> inputs{
@@ -1876,10 +1876,10 @@ namespace RemappingLogicTests
             // Remap Ctrl+A to Ctrl+V
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -1893,8 +1893,8 @@ namespace RemappingLogicTests
 
             // A key state should be unchanged, Ctrl, V should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x41), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x56), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
 
             // Shortcut invoked state should be true
             Assert::IsTrue(testState.osLevelShortcutReMap[src].isShortcutInvoked);
@@ -1907,7 +1907,7 @@ namespace RemappingLogicTests
         {
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            WORD actionKey = 0x41;
+            WORD actionKey = 'A';
             src.SetKey(actionKey);
             WORD disableKey = CommonSharedConstants::VK_DISABLED;
 
@@ -1931,7 +1931,7 @@ namespace RemappingLogicTests
         {
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            WORD actionKey = 0x41;
+            WORD actionKey = 'A';
             src.SetKey(actionKey);
             WORD disableKey = CommonSharedConstants::VK_DISABLED;
 
@@ -1957,7 +1957,7 @@ namespace RemappingLogicTests
         {
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            WORD actionKey = 0x41;
+            WORD actionKey = 'A';
             src.SetKey(actionKey);
             WORD disableKey = CommonSharedConstants::VK_DISABLED;
 
@@ -1980,7 +1980,7 @@ namespace RemappingLogicTests
             // Check that Ctrl+A+B was pressed
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(actionKey), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
             // Shortcut invoked state should be false
             Assert::AreEqual(false, testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -1990,7 +1990,7 @@ namespace RemappingLogicTests
         {
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            WORD actionKey = 0x41;
+            WORD actionKey = 'A';
             src.SetKey(actionKey);
             WORD disableKey = CommonSharedConstants::VK_DISABLED;
 
@@ -2021,7 +2021,7 @@ namespace RemappingLogicTests
             // Check that Ctrl+B was pressed
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(actionKey), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(0x42), true);
+            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('B'), true);
             // Shortcut invoked state should be false
             Assert::AreEqual(false, testState.osLevelShortcutReMap[src].isShortcutInvoked);
         }
@@ -2031,7 +2031,7 @@ namespace RemappingLogicTests
         {
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            WORD actionKey = 0x41;
+            WORD actionKey = 'A';
             src.SetKey(actionKey);
             WORD disableKey = CommonSharedConstants::VK_DISABLED;
 
@@ -2054,7 +2054,7 @@ namespace RemappingLogicTests
         {
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            WORD actionKey = 0x41;
+            WORD actionKey = 'A';
             src.SetKey(actionKey);
             WORD disableKey = CommonSharedConstants::VK_DISABLED;
 
@@ -2087,7 +2087,7 @@ namespace RemappingLogicTests
         {
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            WORD actionKey = 0x41;
+            WORD actionKey = 'A';
             src.SetKey(actionKey);
             WORD disableKey = CommonSharedConstants::VK_DISABLED;
 
@@ -2121,7 +2121,7 @@ namespace RemappingLogicTests
         {
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            WORD actionKey = 0x41;
+            WORD actionKey = 'A';
             src.SetKey(actionKey);
             WORD disableKey = CommonSharedConstants::VK_DISABLED;
 
@@ -2154,7 +2154,7 @@ namespace RemappingLogicTests
         {
             Shortcut src;
             src.SetKey(VK_CONTROL);
-            WORD actionKey = 0x41;
+            WORD actionKey = 'A';
             src.SetKey(actionKey);
             WORD disableKey = CommonSharedConstants::VK_DISABLED;
 
@@ -2198,10 +2198,10 @@ namespace RemappingLogicTests
             // Remap Win+A to Ctrl+V
             Shortcut src;
             src.SetKey(CommonSharedConstants::VK_WIN_BOTH);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs{
@@ -2225,10 +2225,10 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(CommonSharedConstants::VK_WIN_BOTH);
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
+            src.SetKey('A');
             Shortcut dest;
             dest.SetKey(VK_CONTROL);
-            dest.SetKey(0x56);
+            dest.SetKey('V');
             testState.AddOSLevelShortcut(src, dest);
 
             std::vector<INPUT> inputs1{
@@ -2275,8 +2275,8 @@ namespace RemappingLogicTests
             // Remap Win+A toV
             Shortcut src;
             src.SetKey(CommonSharedConstants::VK_WIN_BOTH);
-            src.SetKey(0x41);
-            testState.AddOSLevelShortcut(src, (DWORD)0x56);
+            src.SetKey('A');
+            testState.AddOSLevelShortcut(src, 'V');
 
             std::vector<INPUT> inputs{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_LWIN } },
@@ -2299,8 +2299,8 @@ namespace RemappingLogicTests
             Shortcut src;
             src.SetKey(CommonSharedConstants::VK_WIN_BOTH);
             src.SetKey(VK_CONTROL);
-            src.SetKey(0x41);
-            testState.AddOSLevelShortcut(src, (DWORD)0x56);
+            src.SetKey('A');
+            testState.AddOSLevelShortcut(src, 'V');
 
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_LWIN } },
@@ -2338,8 +2338,8 @@ namespace RemappingLogicTests
             // Remap Win+A to V
             Shortcut src;
             src.SetKey(CommonSharedConstants::VK_WIN_BOTH);
-            src.SetKey(0x41);
-            testState.AddOSLevelShortcut(src, (DWORD)0x56);
+            src.SetKey('A');
+            testState.AddOSLevelShortcut(src, 'V');
 
             std::vector<INPUT> inputs1{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = VK_SHIFT } },
