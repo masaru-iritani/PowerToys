@@ -62,8 +62,8 @@ namespace RemappingLogicTests
             // Ctrl and A key states should be unchanged, Alt and V key states should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(VK_MENU));
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState('V'));
         }
 
         // Test if the app specific remap takes place when the target app is not in foreground
@@ -90,8 +90,8 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs);
 
             // Ctrl and A key states should be true, Alt and V key states should be false
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), true);
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(VK_CONTROL));
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState('A'));
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_MENU), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
@@ -197,7 +197,7 @@ namespace RemappingLogicTests
             // Ctrl and A key states should be unchanged, V key states should be true
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), false);
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), true);
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState('V'));
         }
 
         // Test if the app specific shortcut to key remap takes place when the target app is not in foreground
@@ -221,8 +221,8 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs);
 
             // Ctrl and A key states should be true, V key state should be false
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState(VK_CONTROL), true);
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), true);
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState(VK_CONTROL));
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState('A'));
             Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('V'), false);
         }
 

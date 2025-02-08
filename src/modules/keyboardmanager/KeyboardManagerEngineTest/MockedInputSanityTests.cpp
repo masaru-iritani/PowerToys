@@ -41,7 +41,7 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs1);
 
             // A key state should be true
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), true);
+            Assert::IsTrue(mockedInputHandler.GetVirtualKeyState('A'));
 
             std::vector<INPUT> inputs2{
                 { .type = INPUT_KEYBOARD, .ki = { .wVk = 'A', .dwFlags = KEYEVENTF_KEYUP } },
