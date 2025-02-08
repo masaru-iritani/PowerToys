@@ -51,7 +51,7 @@ namespace RemappingLogicTests
             mockedInputHandler.SendVirtualInput(inputs2);
 
             // A key state should be false
-            Assert::AreEqual(mockedInputHandler.GetVirtualKeyState('A'), false);
+            Assert::IsFalse(mockedInputHandler.GetVirtualKeyState('A'));
         }
     };
 }
